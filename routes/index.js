@@ -23,7 +23,7 @@ function genPDF() {
   var write = fs.createWriteStream('BriefSummary.pdf');
 
   // URL
-  wkhtmltopdf('http://localhost:3000/pdf', { pageSize: 'letter' , orientation: 'landscape', printMediaType: true})
+  wkhtmltopdf('/pdf', { pageSize: 'letter' , orientation: 'landscape', printMediaType: true})
     .pipe(write);
 
   return write;
