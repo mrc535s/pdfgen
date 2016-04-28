@@ -23,7 +23,7 @@ function genPDF() {
   var write = fs.createWriteStream('BriefSummary.pdf');
 
   // URL
-  wkhtmltopdf('/pdf', { pageSize: 'letter' , orientation: 'landscape', printMediaType: true})
+  wkhtmltopdf('https://immense-springs-99065.herokuapp.com/pdf', { pageSize: 'letter' , orientation: 'landscape', printMediaType: true})
     .pipe(write);
 
   return write;
