@@ -60,8 +60,8 @@ function genPDF(data) {
   var fs = require('fs');
   //var customHeader = {'Content-Type': 'application/x-www-form-urlencoded'}
   var wkhtmltopdf = require('wkhtmltopdf');
-  //var url = 'https://immense-springs-99065.herokuapp.com/';
-  var url = 'http://localhost:3000/'
+  var url = 'https://immense-springs-99065.herokuapp.com/';
+  //var url = 'http://localhost:3000/'
 
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
