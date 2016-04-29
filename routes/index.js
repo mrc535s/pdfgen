@@ -9,7 +9,9 @@ router.get('/', function(req, res, next) {
 
 /* POST home page. */
 router.post('/', function(req, res, next) {
-  var data = mapObj(req.body);
+  var dataJSON = JSON.stringify(req.body);
+  var dataObj = {data: dataJSON};
+  var data = mapObj(dataObj);
   console.log(data);
   startup(data, res);
 });
@@ -19,7 +21,9 @@ router.post('/', function(req, res, next) {
 // });
 
 router.post('/pdf/', function(req, res, next) {
-  res.render('index', req.body);
+  console.log(req.body.data);
+  var data = JSON.parse(req.body.data);
+  res.render('index', data);
 });
 
 function startup(data, res) {
@@ -31,14 +35,33 @@ function startup(data, res) {
 }
 
 function mapObj(o) {
-  return Object.keys(o).map(function(k) { return [k, o[k]] });
+  return reducer(o);
+}
+
+function reducer(x) {
+	var keys = getKeys(x);
+	return mapper(keys, x);
+}
+
+function getKeys(obj) {
+	return Object.keys(obj);
+}
+
+function mapper(y, x) {
+	return y.map(function(k) {
+  	if(typeof x[k] === "object") {
+    	return [k, reducer(x[k])];
+    }
+  	return [k, x[k]]
+  });
 }
 
 function genPDF(data) {
   var fs = require('fs');
   //var customHeader = {'Content-Type': 'application/x-www-form-urlencoded'}
   var wkhtmltopdf = require('wkhtmltopdf');
-  var url = 'https://immense-springs-99065.herokuapp.com/';
+  //var url = 'https://immense-springs-99065.herokuapp.com/';
+  var url = 'http://localhost:3000/'
 
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
