@@ -1,0 +1,273 @@
+body{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	padding: 0;
+	width: 80%;
+	font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
+	font-size : 14px;
+}
+
+.headline{
+	font-size : 36px;
+	font-weight: 700;
+}
+
+.subheadline, table#summary th, table#performance th{
+	font-size : 20px;
+	font-weight: 700;
+	background-color: cccccc;
+	padding: 10px 0;
+}
+
+.prodinfo{
+	width: 80%;
+	padding-top: 15px;
+}
+
+.rowspacing{
+	margin-bottom: 20px;
+}
+
+table.innterTable tr> td:nth-child(1){
+	font-weight: 600;
+	padding: 6px 6px;
+	min-width: 130px;
+}
+
+table.grandsummary tr> td:nth-child(1){
+	width: 15%;
+	border: 1px solid gray;
+	padding-bottom: 20px;
+	border-bottom: none;
+	font-weight: 100;
+	font-size: 14px;
+	text-align: left;
+}
+
+table.grandsummary tr:nth-child(1n+3) td{
+	font-size: 14px;
+}
+
+table.grandsummary tr:nth-child(5) td:nth-child(1n+2){
+	text-align: left;
+	padding-left: 40px;
+	font-weight: 400;
+}
+
+table.grandsummary tr:nth-child(4) td:nth-child(1n+2){
+	text-align: right;
+	padding-right: 40px;
+}
+
+table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
+	border-left: none;
+	border-right: none;
+}
+
+.grandsummary{
+	border-collapse: collapse;
+	border: 2px solid gray;
+	column-span: 4;
+	width: 100%;
+}
+
+.grandsummary td{
+	border: 1px solid gray;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+table.grandsummary tr  td {
+	border-right: 0px solid;
+	border-bottom: none;
+	text-align: center;
+	padding: 10px;
+}
+
+.theader{
+	text-align: center;
+}
+
+table#summary, .gscellborder{
+	border: solid 1px gray;
+}
+
+table#summary th, table#summary tr td{
+	border: solid 1px gray;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 16px;
+}
+
+
+table#performance tr td, table#performance th {
+	border: solid 1px gray;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+table#performance, table#summary, table#grand {
+	border: solid 2px gray;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table#summary tr> td:nth-child(21), table#performance > div, footer{
+	display: none;
+}
+
+.subheading2{
+	display: none;
+}
+
+#legal{
+	/*display: none; */
+}
+
+
+
+/* print style sheet code */
+
+@media print {
+
+	@page{
+		size: 11in 8.5in;
+	}
+
+	header nav {
+		display: none;
+	}
+
+	footer{
+		display: none;
+	}
+
+	body{
+		margin-top: .5cm;
+		margin-right: .3cm;
+		margin-bottom: .5cm;
+		margin-left: .2cm;
+		font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
+		-webkit-print-color-adjust: exact;
+	}
+
+
+	hr, .headline, table#performance, table.summary, table#summary, .grandsummary{
+		width: 1450px;
+	}
+
+	hr{
+		height: 3px;
+		background-color: black;
+		top: -3px;
+	}
+
+	.headline{
+		font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
+		font-size : 40px;
+	}
+
+	.headline, table.innterTable tr > td:nth-child(1), table.innterTable tr> td:nth-child(2), .grandsummary td, .subheading2{
+		font-weight: 700;
+	}
+
+	.prodinfo{
+		width: 1300px;
+		padding-top: 15px;
+	}
+
+	table.innterTable tr > td:nth-child(1){
+		padding: 6px 6px;
+		min-width: 160px;
+		background-color: none;
+	}
+
+	table.innterTable tr> td:nth-child(2), table.grandsummary tr> td:nth-child{
+		font-size: 15px;
+	}
+
+	table.innterTable tr> td:nth-child(2){
+		padding: 6px 6px;
+		min-width: 884px;
+		font-weight: normal;
+	}
+
+	table.grandsummary tr> td:nth-child(1){
+		width: 17%;
+		border: 1px solid gray;
+		padding-bottom: 20px;
+		border-bottom: none;
+		text-align: left;
+
+	}
+
+	table.grandsummary tr:nth-child(1n+3) td, table#summary th{
+		font-size: 15px;
+	}
+
+	table.grandsummary tr:nth-child(5) td:nth-child(1n+2){
+		text-align: left;
+		padding-left: 40px;
+		font-weight: 400;
+	}
+
+	table.grandsummary tr:nth-child(4) td:nth-child(1n+2){
+		text-align: right;
+		padding-right: 40px;
+	}
+
+	table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
+		border-left: none;
+		border-right: none;
+	}
+
+	.grandsummary{
+		border-collapse: collapse;
+		border: 2px solid gray;
+		column-span: 4;
+		page-break-after: always;
+	}
+
+	.grandsummary td, table#summary, table#summary tr td,
+	table#summary th, table#performance tr td, table#performance th, table#performance{
+		border: 1px solid gray;
+		border-collapse: collapse;
+	}
+
+	.grandsummary td{
+		font-size: 18px;
+	}
+
+	table#summary tr td {
+		text-align: center;
+	}
+
+	.subheading2{
+		font-size: 30px;
+		display: block;
+		padding-bottom: 5px;
+	}
+
+	table#performance tr td, table#performance th, table#summary th, table#summary th {
+		text-align: center;
+		padding: 10px 0;
+
+	}
+
+	table#performance th{
+		font-size: 22px;
+	}
+
+	table#performance, table#summary, table#grand {
+		border: solid 2px gray;
+	}
+
+	#legal{
+		display: block;
+		width: 125%;
+		height: 125%;
+		page-break-before: always;
+	}
+}

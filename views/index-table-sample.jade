@@ -1,0 +1,1957 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(charset='utf-8')
+    title Tables - Ace Admin
+    meta(name='description', content='Static & Dynamic Tables')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+    // bootstrap & fontawesome
+    link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/assets/font-awesome/4.2.0/css/font-awesome.min.css')
+    // page specific plugin styles
+    // text fonts
+    link(rel='stylesheet', href='/assets/fonts/fonts.googleapis.com.css')
+    // ace styles
+    link#main-ace-style.ace-main-stylesheet(rel='stylesheet', href='/assets/css/ace.min.css')
+    //if lte IE 9
+      link.ace-main-stylesheet(rel='stylesheet', href='/assets/css/ace-part2.min.css')
+    //if lte IE 9
+      link(rel='stylesheet', href='/assets/css/ace-ie.min.css')
+    // inline styles related to this page
+    // ace settings handler
+    script(src='/assets/js/ace-extra.min.js')
+    // HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries
+    //if lte IE 8
+      script(src='/assets/js/html5shiv.min.js')
+      script(src='/assets/js/respond.min.js')
+  body.no-skin
+    #navbar.navbar.navbar-default
+      script(type='text/javascript').
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+      #navbar-container.navbar-container
+        button#menu-toggler.navbar-toggle.menu-toggler.pull-left(type='button', data-target='#sidebar')
+          span.sr-only Toggle sidebar
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        .navbar-header.pull-left
+          a.navbar-brand(href='index.html')
+            small
+              i.fa.fa-leaf
+              | 							Ace Admin
+        .navbar-buttons.navbar-header.pull-right(role='navigation')
+          ul.nav.ace-nav
+            li.grey
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                i.ace-icon.fa.fa-tasks
+                span.badge.badge-grey 4
+              ul.dropdown-menu-right.dropdown-navbar.dropdown-menu.dropdown-caret.dropdown-close
+                li.dropdown-header
+                  i.ace-icon.fa.fa-check
+                  | 									4 Tasks to complete
+                li.dropdown-content
+                  ul.dropdown-menu.dropdown-navbar
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left Software Update
+                          span.pull-right 65%
+                        .progress.progress-mini
+                          .progress-bar(style='width:65%')
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left Hardware Upgrade
+                          span.pull-right 35%
+                        .progress.progress-mini
+                          .progress-bar.progress-bar-danger(style='width:35%')
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left Unit Testing
+                          span.pull-right 15%
+                        .progress.progress-mini
+                          .progress-bar.progress-bar-warning(style='width:15%')
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left Bug Fixes
+                          span.pull-right 90%
+                        .progress.progress-mini.progress-striped.active
+                          .progress-bar.progress-bar-success(style='width:90%')
+                li.dropdown-footer
+                  a(href='#')
+                    | See tasks with details
+                    i.ace-icon.fa.fa-arrow-right
+            li.purple
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                i.ace-icon.fa.fa-bell.icon-animated-bell
+                span.badge.badge-important 8
+              ul.dropdown-menu-right.dropdown-navbar.navbar-pink.dropdown-menu.dropdown-caret.dropdown-close
+                li.dropdown-header
+                  i.ace-icon.fa.fa-exclamation-triangle
+                  | 									8 Notifications
+                li.dropdown-content
+                  ul.dropdown-menu.dropdown-navbar.navbar-pink
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left
+                            i.btn.btn-xs.no-hover.btn-pink.fa.fa-comment
+                            | 														New Comments
+                          span.pull-right.badge.badge-info +12
+                    li
+                      a(href='#')
+                        i.btn.btn-xs.btn-primary.fa.fa-user
+                        | 												Bob just signed up as an editor ...
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left
+                            i.btn.btn-xs.no-hover.btn-success.fa.fa-shopping-cart
+                            | 														New Orders
+                          span.pull-right.badge.badge-success +8
+                    li
+                      a(href='#')
+                        .clearfix
+                          span.pull-left
+                            i.btn.btn-xs.no-hover.btn-info.fa.fa-twitter
+                            | 														Followers
+                          span.pull-right.badge.badge-info +11
+                li.dropdown-footer
+                  a(href='#')
+                    | See all notifications
+                    i.ace-icon.fa.fa-arrow-right
+            li.green
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                i.ace-icon.fa.fa-envelope.icon-animated-vertical
+                span.badge.badge-success 5
+              ul.dropdown-menu-right.dropdown-navbar.dropdown-menu.dropdown-caret.dropdown-close
+                li.dropdown-header
+                  i.ace-icon.fa.fa-envelope-o
+                  | 									5 Messages
+                li.dropdown-content
+                  ul.dropdown-menu.dropdown-navbar
+                    li
+                      a.clearfix(href='#')
+                        img.msg-photo(src='/assets/avatars/avatar.png', alt="Alex's Avatar")
+                        span.msg-body
+                          span.msg-title
+                            span.blue Alex:
+                            | 														Ciao sociis natoque penatibus et auctor ...
+                          span.msg-time
+                            i.ace-icon.fa.fa-clock-o
+                            span a moment ago
+                    li
+                      a.clearfix(href='#')
+                        img.msg-photo(src='/assets/avatars/avatar3.png', alt="Susan's Avatar")
+                        span.msg-body
+                          span.msg-title
+                            span.blue Susan:
+                            | 														Vestibulum id ligula porta felis euismod ...
+                          span.msg-time
+                            i.ace-icon.fa.fa-clock-o
+                            span 20 minutes ago
+                    li
+                      a.clearfix(href='#')
+                        img.msg-photo(src='/assets/avatars/avatar4.png', alt="Bob's Avatar")
+                        span.msg-body
+                          span.msg-title
+                            span.blue Bob:
+                            | 														Nullam quis risus eget urna mollis ornare ...
+                          span.msg-time
+                            i.ace-icon.fa.fa-clock-o
+                            span 3:15 pm
+                    li
+                      a.clearfix(href='#')
+                        img.msg-photo(src='/assets/avatars/avatar2.png', alt="Kate's Avatar")
+                        span.msg-body
+                          span.msg-title
+                            span.blue Kate:
+                            | 														Ciao sociis natoque eget urna mollis ornare ...
+                          span.msg-time
+                            i.ace-icon.fa.fa-clock-o
+                            span 1:33 pm
+                    li
+                      a.clearfix(href='#')
+                        img.msg-photo(src='/assets/avatars/avatar5.png', alt="Fred's Avatar")
+                        span.msg-body
+                          span.msg-title
+                            span.blue Fred:
+                            | 														Vestibulum id penatibus et auctor  ...
+                          span.msg-time
+                            i.ace-icon.fa.fa-clock-o
+                            span 10:09 am
+                li.dropdown-footer
+                  a(href='inbox.html')
+                    | See all messages
+                    i.ace-icon.fa.fa-arrow-right
+            li.light-blue
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                img.nav-user-photo(src='/assets/avatars/user.jpg', alt="Jason's Photo")
+                span.user-info
+                  small Welcome,
+                  | 									Jason
+                i.ace-icon.fa.fa-caret-down
+              ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
+                li
+                  a(href='#')
+                    i.ace-icon.fa.fa-cog
+                    | 										Settings
+                li
+                  a(href='profile.html')
+                    i.ace-icon.fa.fa-user
+                    | 										Profile
+                li.divider
+                li
+                  a(href='#')
+                    i.ace-icon.fa.fa-power-off
+                    | 										Logout
+      // /.navbar-container
+    #main-container.main-container
+      script(type='text/javascript').
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+      #sidebar.sidebar.responsive
+        script(type='text/javascript').
+          try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        #sidebar-shortcuts.sidebar-shortcuts
+          #sidebar-shortcuts-large.sidebar-shortcuts-large
+            button.btn.btn-success
+              i.ace-icon.fa.fa-signal
+            button.btn.btn-info
+              i.ace-icon.fa.fa-pencil
+            button.btn.btn-warning
+              i.ace-icon.fa.fa-users
+            button.btn.btn-danger
+              i.ace-icon.fa.fa-cogs
+          #sidebar-shortcuts-mini.sidebar-shortcuts-mini
+            span.btn.btn-success
+            span.btn.btn-info
+            span.btn.btn-warning
+            span.btn.btn-danger
+        // /.sidebar-shortcuts
+        ul.nav.nav-list
+          li
+            a(href='index.html')
+              i.menu-icon.fa.fa-tachometer
+              span.menu-text  Dashboard
+            b.arrow
+          li
+            a.dropdown-toggle(href='#')
+              i.menu-icon.fa.fa-desktop
+              span.menu-text
+                | UI & Elements
+              b.arrow.fa.fa-angle-down
+            b.arrow
+            ul.submenu
+              li
+                a.dropdown-toggle(href='#')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Layouts
+                  b.arrow.fa.fa-angle-down
+                b.arrow
+                ul.submenu
+                  li
+                    a(href='top-menu.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Top Menu
+                    b.arrow
+                  li
+                    a(href='two-menu-1.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Two Menus 1
+                    b.arrow
+                  li
+                    a(href='two-menu-2.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Two Menus 2
+                    b.arrow
+                  li
+                    a(href='mobile-menu-1.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Default Mobile Menu
+                    b.arrow
+                  li
+                    a(href='mobile-menu-2.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Mobile Menu 2
+                    b.arrow
+                  li
+                    a(href='mobile-menu-3.html')
+                      i.menu-icon.fa.fa-caret-right
+                      | 											Mobile Menu 3
+                    b.arrow
+              li
+                a(href='typography.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Typography
+                b.arrow
+              li
+                a(href='elements.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Elements
+                b.arrow
+              li
+                a(href='buttons.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Buttons & Icons
+                b.arrow
+              li
+                a(href='content-slider.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Content Sliders
+                b.arrow
+              li
+                a(href='treeview.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Treeview
+                b.arrow
+              li
+                a(href='jquery-ui.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									jQuery UI
+                b.arrow
+              li
+                a(href='nestable-list.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Nestable Lists
+                b.arrow
+              li
+                a.dropdown-toggle(href='#')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Three Level Menu
+                  b.arrow.fa.fa-angle-down
+                b.arrow
+                ul.submenu
+                  li
+                    a(href='#')
+                      i.menu-icon.fa.fa-leaf.green
+                      | 											Item #1
+                    b.arrow
+                  li
+                    a.dropdown-toggle(href='#')
+                      i.menu-icon.fa.fa-pencil.orange
+                      | 											4th level
+                      b.arrow.fa.fa-angle-down
+                    b.arrow
+                    ul.submenu
+                      li
+                        a(href='#')
+                          i.menu-icon.fa.fa-plus.purple
+                          | 													Add Product
+                        b.arrow
+                      li
+                        a(href='#')
+                          i.menu-icon.fa.fa-eye.pink
+                          | 													View Products
+                        b.arrow
+          li.active.open
+            a.dropdown-toggle(href='#')
+              i.menu-icon.fa.fa-list
+              span.menu-text  Tables
+              b.arrow.fa.fa-angle-down
+            b.arrow
+            ul.submenu
+              li.active
+                a(href='tables.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Simple & Dynamic
+                b.arrow
+              li
+                a(href='jqgrid.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									jqGrid plugin
+                b.arrow
+          li
+            a.dropdown-toggle(href='#')
+              i.menu-icon.fa.fa-pencil-square-o
+              span.menu-text  Forms
+              b.arrow.fa.fa-angle-down
+            b.arrow
+            ul.submenu
+              li
+                a(href='form-elements.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Form Elements
+                b.arrow
+              li
+                a(href='form-elements-2.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Form Elements 2
+                b.arrow
+              li
+                a(href='form-wizard.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Wizard & Validation
+                b.arrow
+              li
+                a(href='wysiwyg.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Wysiwyg & Markdown
+                b.arrow
+              li
+                a(href='dropzone.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Dropzone File Upload
+                b.arrow
+          li
+            a(href='widgets.html')
+              i.menu-icon.fa.fa-list-alt
+              span.menu-text  Widgets
+            b.arrow
+          li
+            a(href='calendar.html')
+              i.menu-icon.fa.fa-calendar
+              span.menu-text
+                | Calendar
+                span.badge.badge-transparent.tooltip-error(title='2 Important Events')
+                  i.ace-icon.fa.fa-exclamation-triangle.red.bigger-130
+            b.arrow
+          li
+            a(href='gallery.html')
+              i.menu-icon.fa.fa-picture-o
+              span.menu-text  Gallery
+            b.arrow
+          li
+            a.dropdown-toggle(href='#')
+              i.menu-icon.fa.fa-tag
+              span.menu-text  More Pages
+              b.arrow.fa.fa-angle-down
+            b.arrow
+            ul.submenu
+              li
+                a(href='profile.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									User Profile
+                b.arrow
+              li
+                a(href='inbox.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Inbox
+                b.arrow
+              li
+                a(href='pricing.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Pricing Tables
+                b.arrow
+              li
+                a(href='invoice.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Invoice
+                b.arrow
+              li
+                a(href='timeline.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Timeline
+                b.arrow
+              li
+                a(href='email.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Email Templates
+                b.arrow
+              li
+                a(href='login.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Login & Register
+                b.arrow
+          li
+            a.dropdown-toggle(href='#')
+              i.menu-icon.fa.fa-file-o
+              span.menu-text
+                | Other Pages
+                span.badge.badge-primary 5
+              b.arrow.fa.fa-angle-down
+            b.arrow
+            ul.submenu
+              li
+                a(href='faq.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									FAQ
+                b.arrow
+              li
+                a(href='error-404.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Error 404
+                b.arrow
+              li
+                a(href='error-500.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Error 500
+                b.arrow
+              li
+                a(href='grid.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Grid
+                b.arrow
+              li
+                a(href='blank.html')
+                  i.menu-icon.fa.fa-caret-right
+                  | 									Blank Page
+                b.arrow
+        // /.nav-list
+        #sidebar-collapse.sidebar-toggle.sidebar-collapse
+          i.ace-icon.fa.fa-angle-double-left(data-icon1='ace-icon fa fa-angle-double-left', data-icon2='ace-icon fa fa-angle-double-right')
+        script(type='text/javascript').
+          try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+      .main-content
+        .main-content-inner
+          #breadcrumbs.breadcrumbs
+            script(type='text/javascript').
+              try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            ul.breadcrumb
+              li
+                i.ace-icon.fa.fa-home.home-icon
+                a(href='#') Home
+              li
+                a(href='#') Tables
+              li.active Simple & Dynamic
+            // /.breadcrumb
+            #nav-search.nav-search
+              form.form-search
+                span.input-icon
+                  input#nav-search-input.nav-search-input(type='text', placeholder='Search ...', autocomplete='off')
+                  i.ace-icon.fa.fa-search.nav-search-icon
+            // /.nav-search
+          .page-content
+            #ace-settings-container.ace-settings-container
+              #ace-settings-btn.btn.btn-app.btn-xs.btn-warning.ace-settings-btn
+                i.ace-icon.fa.fa-cog.bigger-130
+              #ace-settings-box.ace-settings-box.clearfix
+                .pull-left.width-50
+                  .ace-settings-item
+                    .pull-left
+                      select#skin-colorpicker.hide
+                        option(data-skin='no-skin', value='#438EB9') #438EB9
+                        option(data-skin='skin-1', value='#222A2D') #222A2D
+                        option(data-skin='skin-2', value='#C6487E') #C6487E
+                        option(data-skin='skin-3', value='#D0D0D0') #D0D0D0
+                    span   Choose Skin
+                  .ace-settings-item
+                    input#ace-settings-navbar.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-navbar')  Fixed Navbar
+                  .ace-settings-item
+                    input#ace-settings-sidebar.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-sidebar')  Fixed Sidebar
+                  .ace-settings-item
+                    input#ace-settings-breadcrumbs.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-breadcrumbs')  Fixed Breadcrumbs
+                  .ace-settings-item
+                    input#ace-settings-rtl.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-rtl')  Right To Left (rtl)
+                  .ace-settings-item
+                    input#ace-settings-add-container.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-add-container')
+                      | Inside
+                      b .container
+                // /.pull-left
+                .pull-left.width-50
+                  .ace-settings-item
+                    input#ace-settings-hover.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-hover')  Submenu on Hover
+                  .ace-settings-item
+                    input#ace-settings-compact.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-compact')  Compact Sidebar
+                  .ace-settings-item
+                    input#ace-settings-highlight.ace.ace-checkbox-2(type='checkbox')
+                    label.lbl(for='ace-settings-highlight')  Alt. Active Item
+                // /.pull-left
+              // /.ace-settings-box
+            // /.ace-settings-container
+            .page-header
+              h1
+                | Tables
+                small
+                  i.ace-icon.fa.fa-angle-double-right
+                  | 									Static & Dynamic Tables
+            // /.page-header
+            .row
+              .col-xs-12
+                // PAGE CONTENT BEGINS
+                .row
+                  .col-xs-12
+                    table#simple-table.table.table-striped.table-bordered.table-hover
+                      thead
+                        tr
+                          th.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          th Domain
+                          th Price
+                          th.hidden-480 Clicks
+                          th
+                            i.ace-icon.fa.fa-clock-o.bigger-110.hidden-480
+                            | 														Update
+                          th.hidden-480 Status
+                          th
+                      tbody
+                        tr
+                          td.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          td
+                            a(href='#') ace.com
+                          td $45
+                          td.hidden-480 3,330
+                          td Feb 12
+                          td.hidden-480
+                            span.label.label-sm.label-warning Expiring
+                          td
+                            .hidden-sm.hidden-xs.btn-group
+                              button.btn.btn-xs.btn-success
+                                i.ace-icon.fa.fa-check.bigger-120
+                              button.btn.btn-xs.btn-info
+                                i.ace-icon.fa.fa-pencil.bigger-120
+                              button.btn.btn-xs.btn-danger
+                                i.ace-icon.fa.fa-trash-o.bigger-120
+                              button.btn.btn-xs.btn-warning
+                                i.ace-icon.fa.fa-flag.bigger-120
+                            .hidden-md.hidden-lg
+                              .inline.pos-rel
+                                button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                  i.ace-icon.fa.fa-cog.icon-only.bigger-110
+                                ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                  li
+                                    a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                      span.blue
+                                        i.ace-icon.fa.fa-search-plus.bigger-120
+                                  li
+                                    a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                      span.green
+                                        i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                  li
+                                    a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                      span.red
+                                        i.ace-icon.fa.fa-trash-o.bigger-120
+                        tr
+                          td.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          td
+                            a(href='#') base.com
+                          td $35
+                          td.hidden-480 2,595
+                          td Feb 18
+                          td.hidden-480
+                            span.label.label-sm.label-success Registered
+                          td
+                            .hidden-sm.hidden-xs.btn-group
+                              button.btn.btn-xs.btn-success
+                                i.ace-icon.fa.fa-check.bigger-120
+                              button.btn.btn-xs.btn-info
+                                i.ace-icon.fa.fa-pencil.bigger-120
+                              button.btn.btn-xs.btn-danger
+                                i.ace-icon.fa.fa-trash-o.bigger-120
+                              button.btn.btn-xs.btn-warning
+                                i.ace-icon.fa.fa-flag.bigger-120
+                            .hidden-md.hidden-lg
+                              .inline.pos-rel
+                                button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                  i.ace-icon.fa.fa-cog.icon-only.bigger-110
+                                ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                  li
+                                    a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                      span.blue
+                                        i.ace-icon.fa.fa-search-plus.bigger-120
+                                  li
+                                    a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                      span.green
+                                        i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                  li
+                                    a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                      span.red
+                                        i.ace-icon.fa.fa-trash-o.bigger-120
+                        tr
+                          td.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          td
+                            a(href='#') max.com
+                          td $60
+                          td.hidden-480 4,400
+                          td Mar 11
+                          td.hidden-480
+                            span.label.label-sm.label-warning Expiring
+                          td
+                            .hidden-sm.hidden-xs.btn-group
+                              button.btn.btn-xs.btn-success
+                                i.ace-icon.fa.fa-check.bigger-120
+                              button.btn.btn-xs.btn-info
+                                i.ace-icon.fa.fa-pencil.bigger-120
+                              button.btn.btn-xs.btn-danger
+                                i.ace-icon.fa.fa-trash-o.bigger-120
+                              button.btn.btn-xs.btn-warning
+                                i.ace-icon.fa.fa-flag.bigger-120
+                            .hidden-md.hidden-lg
+                              .inline.pos-rel
+                                button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                  i.ace-icon.fa.fa-cog.icon-only.bigger-110
+                                ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                  li
+                                    a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                      span.blue
+                                        i.ace-icon.fa.fa-search-plus.bigger-120
+                                  li
+                                    a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                      span.green
+                                        i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                  li
+                                    a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                      span.red
+                                        i.ace-icon.fa.fa-trash-o.bigger-120
+                        tr
+                          td.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          td
+                            a(href='#') best.com
+                          td $75
+                          td.hidden-480 6,500
+                          td Apr 03
+                          td.hidden-480
+                            span.label.label-sm.label-inverse.arrowed-in Flagged
+                          td
+                            .hidden-sm.hidden-xs.btn-group
+                              button.btn.btn-xs.btn-success
+                                i.ace-icon.fa.fa-check.bigger-120
+                              button.btn.btn-xs.btn-info
+                                i.ace-icon.fa.fa-pencil.bigger-120
+                              button.btn.btn-xs.btn-danger
+                                i.ace-icon.fa.fa-trash-o.bigger-120
+                              button.btn.btn-xs.btn-warning
+                                i.ace-icon.fa.fa-flag.bigger-120
+                            .hidden-md.hidden-lg
+                              .inline.pos-rel
+                                button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                  i.ace-icon.fa.fa-cog.icon-only.bigger-110
+                                ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                  li
+                                    a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                      span.blue
+                                        i.ace-icon.fa.fa-search-plus.bigger-120
+                                  li
+                                    a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                      span.green
+                                        i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                  li
+                                    a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                      span.red
+                                        i.ace-icon.fa.fa-trash-o.bigger-120
+                        tr
+                          td.center
+                            label.pos-rel
+                              input.ace(type='checkbox')
+                              span.lbl
+                          td
+                            a(href='#') pro.com
+                          td $55
+                          td.hidden-480 4,250
+                          td Jan 21
+                          td.hidden-480
+                            span.label.label-sm.label-success Registered
+                          td
+                            .hidden-sm.hidden-xs.btn-group
+                              button.btn.btn-xs.btn-success
+                                i.ace-icon.fa.fa-check.bigger-120
+                              button.btn.btn-xs.btn-info
+                                i.ace-icon.fa.fa-pencil.bigger-120
+                              button.btn.btn-xs.btn-danger
+                                i.ace-icon.fa.fa-trash-o.bigger-120
+                              button.btn.btn-xs.btn-warning
+                                i.ace-icon.fa.fa-flag.bigger-120
+                            .hidden-md.hidden-lg
+                              .inline.pos-rel
+                                button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                  i.ace-icon.fa.fa-cog.icon-only.bigger-110
+                                ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                  li
+                                    a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                      span.blue
+                                        i.ace-icon.fa.fa-search-plus.bigger-120
+                                  li
+                                    a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                      span.green
+                                        i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                  li
+                                    a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                      span.red
+                                        i.ace-icon.fa.fa-trash-o.bigger-120
+                  // /.span
+                // /.row
+                .hr.hr-18.dotted.hr-double
+                h4.pink
+                  i.ace-icon.fa.fa-hand-o-right.icon-animated-hand-pointer.blue
+                  a.green(href='#modal-table', role='button', data-toggle='modal')  Table Inside a Modal Box
+                .hr.hr-18.dotted.hr-double
+                .row
+                  .col-xs-12
+                    h3.header.smaller.lighter.blue jQuery dataTables
+                    .clearfix
+                      .pull-right.tableTools-container
+                    .table-header
+                      | Results for "Latest Registered Domains"
+                    // div.table-responsive
+                    // div.dataTables_borderWrap
+                    div
+                      table#dynamic-table.table.table-striped.table-bordered.table-hover
+                        thead
+                          tr
+                            th.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            th Domain
+                            th Price
+                            th.hidden-480 Clicks
+                            th
+                              i.ace-icon.fa.fa-clock-o.bigger-110.hidden-480
+                              | 															Update
+                            th.hidden-480 Status
+                            th
+                        tbody
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') app.com
+                            td $45
+                            td.hidden-480 3,330
+                            td Feb 12
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') base.com
+                            td $35
+                            td.hidden-480 2,595
+                            td Feb 18
+                            td.hidden-480
+                              span.label.label-sm.label-success Registered
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') max.com
+                            td $60
+                            td.hidden-480 4,400
+                            td Mar 11
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') best.com
+                            td $75
+                            td.hidden-480 6,500
+                            td Apr 03
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') pro.com
+                            td $55
+                            td.hidden-480 4,250
+                            td Jan 21
+                            td.hidden-480
+                              span.label.label-sm.label-success Registered
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') team.com
+                            td $40
+                            td.hidden-480 3,200
+                            td Feb 09
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') up.com
+                            td $95
+                            td.hidden-480 8,520
+                            td Feb 22
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') view.com
+                            td $45
+                            td.hidden-480 4,100
+                            td Mar 12
+                            td.hidden-480
+                              span.label.label-sm.label-success Registered
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') nice.com
+                            td $38
+                            td.hidden-480 3,940
+                            td Feb 12
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') fine.com
+                            td $25
+                            td.hidden-480 2,983
+                            td Apr 01
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') good.com
+                            td $50
+                            td.hidden-480 6,500
+                            td Feb 02
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') great.com
+                            td $55
+                            td.hidden-480 6,400
+                            td Feb 24
+                            td.hidden-480
+                              span.label.label-sm.label-success Registered
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') shine.com
+                            td $25
+                            td.hidden-480 2,200
+                            td Apr 01
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') rise.com
+                            td $42
+                            td.hidden-480 3,900
+                            td Feb 01
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') above.com
+                            td $35
+                            td.hidden-480 3,420
+                            td Mar 12
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') share.com
+                            td $30
+                            td.hidden-480 3,200
+                            td Feb 11
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') fair.com
+                            td $35
+                            td.hidden-480 3,900
+                            td Mar 26
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') year.com
+                            td $48
+                            td.hidden-480 3,990
+                            td Feb 15
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') day.com
+                            td $55
+                            td.hidden-480 5,600
+                            td Jan 29
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') light.com
+                            td $40
+                            td.hidden-480 3,100
+                            td Feb 17
+                            td.hidden-480
+                              span.label.label-sm.label-success Registered
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') sight.com
+                            td $58
+                            td.hidden-480 6,100
+                            td Feb 19
+                            td.hidden-480
+                              span.label.label-sm.label-inverse.arrowed-in Flagged
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') right.com
+                            td $50
+                            td.hidden-480 4,400
+                            td Apr 01
+                            td.hidden-480
+                              span.label.label-sm.label-warning Expiring
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                          tr
+                            td.center
+                              label.pos-rel
+                                input.ace(type='checkbox')
+                                span.lbl
+                            td
+                              a(href='#') once.com
+                            td $20
+                            td.hidden-480 1,400
+                            td Apr 04
+                            td.hidden-480
+                              span.label.label-sm.label-info.arrowed.arrowed-righ Sold
+                            td
+                              .hidden-sm.hidden-xs.action-buttons
+                                a.blue(href='#')
+                                  i.ace-icon.fa.fa-search-plus.bigger-130
+                                a.green(href='#')
+                                  i.ace-icon.fa.fa-pencil.bigger-130
+                                a.red(href='#')
+                                  i.ace-icon.fa.fa-trash-o.bigger-130
+                              .hidden-md.hidden-lg
+                                .inline.pos-rel
+                                  button.btn.btn-minier.btn-yellow.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+                                    i.ace-icon.fa.fa-caret-down.icon-only.bigger-120
+                                  ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+                                    li
+                                      a.tooltip-info(href='#', data-rel='tooltip', title='View')
+                                        span.blue
+                                          i.ace-icon.fa.fa-search-plus.bigger-120
+                                    li
+                                      a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+                                        span.green
+                                          i.ace-icon.fa.fa-pencil-square-o.bigger-120
+                                    li
+                                      a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+                                        span.red
+                                          i.ace-icon.fa.fa-trash-o.bigger-120
+                #modal-table.modal.fade(tabindex='-1')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header.no-padding
+                        .table-header
+                          button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                            span.white ×
+                          | 													Results for "Latest Registered Domains
+                      .modal-body.no-padding
+                        table.table.table-striped.table-bordered.table-hover.no-margin-bottom.no-border-top
+                          thead
+                            tr
+                              th Domain
+                              th Price
+                              th Clicks
+                              th
+                                i.ace-icon.fa.fa-clock-o.bigger-110
+                                | 																Update
+                          tbody
+                            tr
+                              td
+                                a(href='#') ace.com
+                              td $45
+                              td 3,330
+                              td Feb 12
+                            tr
+                              td
+                                a(href='#') base.com
+                              td $35
+                              td 2,595
+                              td Feb 18
+                            tr
+                              td
+                                a(href='#') max.com
+                              td $60
+                              td 4,400
+                              td Mar 11
+                            tr
+                              td
+                                a(href='#') best.com
+                              td $75
+                              td 6,500
+                              td Apr 03
+                            tr
+                              td
+                                a(href='#') pro.com
+                              td $55
+                              td 4,250
+                              td Jan 21
+                      .modal-footer.no-margin-top
+                        button.btn.btn-sm.btn-danger.pull-left(data-dismiss='modal')
+                          i.ace-icon.fa.fa-times
+                          | 													Close
+                        ul.pagination.pull-right.no-margin
+                          li.prev.disabled
+                            a(href='#')
+                              i.ace-icon.fa.fa-angle-double-left
+                          li.active
+                            a(href='#') 1
+                          li
+                            a(href='#') 2
+                          li
+                            a(href='#') 3
+                          li.next
+                            a(href='#')
+                              i.ace-icon.fa.fa-angle-double-right
+                    // /.modal-content
+                  // /.modal-dialog
+                // PAGE CONTENT ENDS
+              // /.col
+            // /.row
+          // /.page-content
+      // /.main-content
+      .footer
+        .footer-inner
+          .footer-content
+            span.bigger-120
+              span.blue.bolder Ace
+              | 							Application © 2013-2014
+            span.action-buttons
+              a(href='#')
+                i.ace-icon.fa.fa-twitter-square.light-blue.bigger-150
+              a(href='#')
+                i.ace-icon.fa.fa-facebook-square.text-primary.bigger-150
+              a(href='#')
+                i.ace-icon.fa.fa-rss-square.orange.bigger-150
+      a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse(href='#')
+        i.ace-icon.fa.fa-angle-double-up.icon-only.bigger-110
+    // /.main-container
+    // basic scripts
+    //if !IE
+    script(src='/assets/js/jquery.2.1.1.min.js')
+    // <![endif]
+    //if IE
+      script(src='/assets/js/jquery.1.11.1.min.js')
+    //if !IE
+    script(type='text/javascript').
+      window.jQuery || document.write("<script src='/assets/js/jquery.min.js'>"+"<"+"/script>");
+    // <![endif]
+    //if IE
+      script(type='text/javascript').
+        window.jQuery || document.write("<script src='/assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    script(type='text/javascript').
+      if('ontouchstart' in document.documentElement) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    script(src='/assets/js/bootstrap.min.js')
+    // page specific plugin scripts
+    script(src='/assets/js/jquery.dataTables.min.js')
+    script(src='/assets/js/jquery.dataTables.bootstrap.min.js')
+    script(src='/assets/js/dataTables.tableTools.min.js')
+    script(src='/assets/js/dataTables.colVis.min.js')
+    // ace scripts
+    script(src='/assets/js/ace-elements.min.js')
+    script(src='/assets/js/ace.min.js')
+    // inline scripts related to this page
+    script(type='text/javascript').
+      jQuery(function($) {
+      //initiate dataTables plugin
+      var oTable1 =
+      $('#dynamic-table')
+      //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+      .dataTable( {
+      bAutoWidth: false,
+      "aoColumns": [
+      { "bSortable": false },
+      null, null,null, null, null,
+      { "bSortable": false }
+      ],
+      "aaSorting": [],
+      //,
+      //"sScrollY": "200px",
+      //"bPaginate": false,
+      //"sScrollX": "100%",
+      //"sScrollXInner": "120%",
+      //"bScrollCollapse": true,
+      //Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+      //you may want to wrap the table inside a "div.dataTables_borderWrap" element
+      //"iDisplayLength": 50
+      } );
+      //oTable1.fnAdjustColumnSizing();
+      //TableTools settings
+      TableTools.classes.container = "btn-group btn-overlap";
+      TableTools.classes.print = {
+      "body": "DTTT_Print",
+      "info": "tableTools-alert gritter-item-wrapper gritter-info gritter-center white",
+      "message": "tableTools-print-navbar"
+      }
+      //initiate TableTools extension
+      var tableTools_obj = new $.fn.dataTable.TableTools( oTable1, {
+      "sSwfPath": "/assets/swf/copy_csv_xls_pdf.swf",
+      "sRowSelector": "td:not(:last-child)",
+      "sRowSelect": "multi",
+      "fnRowSelected": function(row) {
+      //check checkbox when row is selected
+      try { $(row).find('input[type=checkbox]').get(0).checked = true }
+      catch(e) {}
+      },
+      "fnRowDeselected": function(row) {
+      //uncheck checkbox
+      try { $(row).find('input[type=checkbox]').get(0).checked = false }
+      catch(e) {}
+      },
+      "sSelectedClass": "success",
+      "aButtons": [
+      {
+      "sExtends": "copy",
+      "sToolTip": "Copy to clipboard",
+      "sButtonClass": "btn btn-white btn-primary btn-bold",
+      "sButtonText": "<i class='fa fa-copy bigger-110 pink'></i>",
+      "fnComplete": function() {
+      this.fnInfo( '<h3 class="no-margin-top smaller">Table copied</h3>\\
+      <p>Copied '+(oTable1.fnSettings().fnRecordsTotal())+' row(s) to the clipboard.</p>',
+      1500
+      );
+      }
+      },
+      {
+      "sExtends": "csv",
+      "sToolTip": "Export to CSV",
+      "sButtonClass": "btn btn-white btn-primary  btn-bold",
+      "sButtonText": "<i class='fa fa-file-excel-o bigger-110 green'></i>"
+      },
+      {
+      "sExtends": "pdf",
+      "sToolTip": "Export to PDF",
+      "sButtonClass": "btn btn-white btn-primary  btn-bold",
+      "sButtonText": "<i class='fa fa-file-pdf-o bigger-110 red'></i>"
+      },
+      {
+      "sExtends": "print",
+      "sToolTip": "Print view",
+      "sButtonClass": "btn btn-white btn-primary  btn-bold",
+      "sButtonText": "<i class='fa fa-print bigger-110 grey'></i>",
+      "sMessage": "<div class='navbar navbar-default'><div class='navbar-header pull-left'><a class='navbar-brand' href='#'><small>Optional Navbar &amp; Text</small></a></div></div>",
+      "sInfo": "<h3 class='no-margin-top'>Print view</h3>\\
+      <p>Please use your browser's print function to\\
+      print this table.\\
+      <br />Press <b>escape</b> when finished.</p>",
+      }
+      ]
+      } );
+      //we put a container before our table and append TableTools element to it
+      $(tableTools_obj.fnContainer()).appendTo($('.tableTools-container'));
+      //also add tooltips to table tools buttons
+      //addding tooltips directly to "A" buttons results in buttons disappearing (weired! don't know why!)
+      //so we add tooltips to the "DIV" child after it becomes inserted
+      //flash objects inside table tools buttons are inserted with some delay (100ms) (for some reason)
+      setTimeout(function() {
+      $(tableTools_obj.fnContainer()).find('a.DTTT_button').each(function() {
+      var div = $(this).find('> div');
+      if(div.length > 0) div.tooltip({container: 'body'});
+      else $(this).tooltip({container: 'body'});
+      });
+      }, 200);
+      //ColVis extension
+      var colvis = new $.fn.dataTable.ColVis( oTable1, {
+      "buttonText": "<i class='fa fa-search'></i>",
+      "aiExclude": [0, 6],
+      "bShowAll": true,
+      //"bRestore": true,
+      "sAlign": "right",
+      "fnLabel": function(i, title, th) {
+      return $(th).text();//remove icons, etc
+      }
+      });
+      //style it
+      $(colvis.button()).addClass('btn-group').find('button').addClass('btn btn-white btn-info btn-bold')
+      //and append it to our table tools btn-group, also add tooltip
+      $(colvis.button())
+      .prependTo('.tableTools-container .btn-group')
+      .attr('title', 'Show/hide columns').tooltip({container: 'body'});
+      //and make the list, buttons and checkboxed Ace-like
+      $(colvis.dom.collection)
+      .addClass('dropdown-menu dropdown-light dropdown-caret dropdown-caret-right')
+      .find('li').wrapInner('<a href="javascript:void(0)" />') //'A' tag is required for better styling
+      .find('input[type=checkbox]').addClass('ace').next().addClass('lbl padding-8');
+      /////////////////////////////////
+      //table checkboxes
+      $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+      //select/deselect all rows according to table header checkbox
+      $('#dynamic-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+      var th_checked = this.checked;//checkbox inside "TH" table header
+      $(this).closest('table').find('tbody > tr').each(function(){
+      var row = this;
+      if(th_checked) tableTools_obj.fnSelect(row);
+      else tableTools_obj.fnDeselect(row);
+      });
+      });
+      //select/deselect a row when the checkbox is checked/unchecked
+      $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+      var row = $(this).closest('tr').get(0);
+      if(!this.checked) tableTools_obj.fnSelect(row);
+      else tableTools_obj.fnDeselect($(this).closest('tr').get(0));
+      });
+      $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      e.preventDefault();
+      });
+      //And for the first simple table, which doesn't have TableTools or dataTables
+      //select/deselect all rows according to table header checkbox
+      var active_class = 'active';
+      $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+      var th_checked = this.checked;//checkbox inside "TH" table header
+      $(this).closest('table').find('tbody > tr').each(function(){
+      var row = this;
+      if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+      else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+      });
+      });
+      //select/deselect a row when the checkbox is checked/unchecked
+      $('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+      var $row = $(this).closest('tr');
+      if(this.checked) $row.addClass(active_class);
+      else $row.removeClass(active_class);
+      });
+      /********************************/
+      //add tooltip for small view action buttons in dropdown menu
+      $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+      //tooltip placement on right or left
+      function tooltip_placement(context, source) {
+      var $source = $(source);
+      var $parent = $source.closest('table')
+      var off1 = $parent.offset();
+      var w1 = $parent.width();
+      var off2 = $source.offset();
+      //var w2 = $source.width();
+      if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+      return 'left';
+      }
+      })

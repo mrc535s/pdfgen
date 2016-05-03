@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+var wkhtmltopdf = require('wkhtmltopdf');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,9 +18,9 @@ router.post('/', function(req, res, next) {
   startup(data, res);
 });
 
-// router.get('/pdf/', function(req, res, next) {
-//   res.render('index', { title: 1});
-// });
+router.get('/pdf/', function(req, res, next) {
+   res.render('index', { title: 1});
+});
 
 router.post('/pdf/', function(req, res, next) {
   console.log(req.body.data);
@@ -57,11 +59,9 @@ function mapper(y, x) {
 }
 
 function genPDF(data) {
-  var fs = require('fs');
   //var customHeader = {'Content-Type': 'application/x-www-form-urlencoded'}
-  var wkhtmltopdf = require('wkhtmltopdf');
-  var url = 'https://immense-springs-99065.herokuapp.com/';
-  //var url = 'http://localhost:3000/'
+  //var url = 'https://immense-springs-99065.herokuapp.com/';
+  var url = 'http://localhost:3000/'
 
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
