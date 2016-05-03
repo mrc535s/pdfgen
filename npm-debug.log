@@ -1,35 +1,35 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/michaelrcarney/.nvm/versions/v5.10.0/bin/node',
-1 verbose cli   '/Users/michaelrcarney/.nvm/versions/v5.10.0/bin/npm',
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'start' ]
-2 info using npm@3.8.7
-3 info using node@v5.10.0
+2 info using npm@3.8.6
+3 info using node@v6.0.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle pdfgen@0.0.0~prestart: pdfgen@0.0.0
 6 silly lifecycle pdfgen@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle pdfgen@0.0.0~start: pdfgen@0.0.0
 8 verbose lifecycle pdfgen@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle pdfgen@0.0.0~start: PATH: /Users/michaelrcarney/.nvm/versions/v5.10.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/michaelrcarney/node-express/pdfgen/node_modules/.bin:/Users/michaelrcarney/.nvm/versions/v5.10.0/bin:/Users/michaelrcarney/.nvm/versions/v5.10.0/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Users/michaelrcarney/Desktop/Work/android/sdk/platform-tools:/Users/michaelrcarney/Desktop/Work/android/sdk/tools
-10 verbose lifecycle pdfgen@0.0.0~start: CWD: /Users/michaelrcarney/node-express/pdfgen
-11 silly lifecycle pdfgen@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
+9 verbose lifecycle pdfgen@0.0.0~start: PATH: C:\Users\mrcarn\AppData\Roaming\nvm\v6.0.0\node_modules\npm\bin\node-gyp-bin;C:\Users\mrcarn\development\PDF\pdfgeneration\node_modules\.bin;C:\Program Files\nodejs;C:\Ruby200\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Oracle\Product\11.2.0\client_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\QuickTime\QTSystem\;c:\progra~2\Java\jre6\lib\Security;C:\Program Files\Git\cmd;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Program Files\Java\jdk1.8.0_77\bin;C:\Program Files (x86)\CloudFoundry;C:\apache-maven-3.0.3\bin;C:\Users\mrcarn\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\wkhtmltopdf\bin;C:\Ruby200\bin;C:\Ruby22-x64\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Oracle\Product\11.2.0\client_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Users\mrcarn\AppData\Local\atom\bin;C:\Users\mrcarn\AppData\Roaming\npm;C:\python27;C:\Users\mrcarn\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\wkhtmltopdf
+10 verbose lifecycle pdfgen@0.0.0~start: CWD: C:\Users\mrcarn\development\PDF\pdfgeneration
+11 silly lifecycle pdfgen@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
 12 silly lifecycle pdfgen@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle pdfgen@0.0.0~start: Failed to exec start script
 14 verbose stack Error: pdfgen@0.0.0 start: `node ./bin/www`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/Users/michaelrcarney/.nvm/versions/v5.10.0/lib/node_modules/npm/lib/utils/lifecycle.js:244:16)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at EventEmitter.emit (events.js:185:7)
-14 verbose stack     at ChildProcess.<anonymous> (/Users/michaelrcarney/.nvm/versions/v5.10.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at ChildProcess.emit (events.js:185:7)
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\mrcarn\AppData\Roaming\nvm\v6.0.0\node_modules\npm\lib\utils\lifecycle.js:239:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\mrcarn\AppData\Roaming\nvm\v6.0.0\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
 14 verbose stack     at maybeClose (internal/child_process.js:850:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid pdfgen@0.0.0
-16 verbose cwd /Users/michaelrcarney/node-express/pdfgen
-17 error Darwin 15.4.0
-18 error argv "/Users/michaelrcarney/.nvm/versions/v5.10.0/bin/node" "/Users/michaelrcarney/.nvm/versions/v5.10.0/bin/npm" "start"
-19 error node v5.10.0
-20 error npm  v3.8.7
+16 verbose cwd C:\Users\mrcarn\development\PDF\pdfgeneration
+17 error Windows_NT 6.1.7601
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v6.0.0
+20 error npm  v3.8.6
 21 error code ELIFECYCLE
 22 error pdfgen@0.0.0 start: `node ./bin/www`
 22 error Exit status 1

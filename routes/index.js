@@ -25,6 +25,7 @@ router.get('/pdf/', function(req, res, next) {
 router.post('/pdf/', function(req, res, next) {
   console.log(req.body.data);
   var data = JSON.parse(req.body.data);
+  console.log(data);
   res.render('index', data);
 });
 
@@ -61,7 +62,7 @@ function mapper(y, x) {
 function genPDF(data) {
   //var customHeader = {'Content-Type': 'application/x-www-form-urlencoded'}
   //var url = 'https://immense-springs-99065.herokuapp.com/';
-  var url = 'http://localhost:3000/'
+  var url = 'http://localhost:5000/'
 
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
