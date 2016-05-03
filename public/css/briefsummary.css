@@ -9,15 +9,24 @@ body{
 }
 
 .headline{
-	font-size : 36px;
+	font-size : 40px;	
+}
+
+.headline, .headline2,
+.subheadline, table#summary th, table#performance th,
+table.innterTable tr> td:nth-child(1), .grandsummary td{
 	font-weight: 700;
 }
 
+.headline2{
+	font-size : 32px;
+	color: gray;	
+}
+
 .subheadline, table#summary th, table#performance th{
-	font-size : 20px;
-	font-weight: 700;
+	font-size : 20px;	
 	background-color: cccccc;
-	padding: 10px 0;
+	padding: 10px 0;	
 }
 
 .prodinfo{
@@ -29,10 +38,9 @@ body{
 	margin-bottom: 20px;
 }
 
-table.innterTable tr> td:nth-child(1){
-	font-weight: 600;
+table.innterTable tr> td:nth-child(1){	
 	padding: 6px 6px;
-	min-width: 130px;
+	min-width: 150px;
 }
 
 table.grandsummary tr> td:nth-child(1){
@@ -41,8 +49,9 @@ table.grandsummary tr> td:nth-child(1){
 	padding-bottom: 20px;
 	border-bottom: none;
 	font-weight: 100;
-	font-size: 14px;
+	font-size: 15px;
 	text-align: left;
+	min-width: 200px;
 }
 
 table.grandsummary tr:nth-child(1n+3) td{
@@ -74,8 +83,7 @@ table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
 
 .grandsummary td{
 	border: 1px solid gray;
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 18px;	
 }
 
 table.grandsummary tr  td {
@@ -89,20 +97,17 @@ table.grandsummary tr  td {
 	text-align: center;
 }
 
-table#summary, .gscellborder{
+table#summary, .gscellborder, table#summary th, table#summary tr td, table#performance tr td, table#performance th{
 	border: solid 1px gray;
 }
 
 table#summary th, table#summary tr td{
-	border: solid 1px gray;
 	text-align: center;
 	padding: 10px 0;
 	font-size: 16px;
 }
 
-
 table#performance tr td, table#performance th {
-	border: solid 1px gray;
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -128,6 +133,7 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
 
 
+
 /* print style sheet code */
 
 @media print {
@@ -150,11 +156,34 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 		margin-bottom: .5cm;
 		margin-left: .2cm;
 		font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
-		-webkit-print-color-adjust: exact;
 	}
 
+	table{ 
+		page-break-inside:auto;
+	}
+    
+    tr{
+    	page-break-inside:avoid; 
+    	page-break-after:auto;
+    }
 
-	hr, .headline, table#performance, table.summary, table#summary, .grandsummary{
+    thead {
+    	display:table-header-group;
+    	background-color: #f5f5f5 !important;
+    	-webkit-print-color-adjust: exact;
+    }
+
+    table#performance thead tr td{    
+    	display:table-header-group;
+    	background-color: #cccccc !important;
+    	-webkit-print-color-adjust: exact;
+    }
+
+    tfoot { 
+    	display:table-footer-group;
+    }
+
+	hr, .headline, table#performance, table.summary, table#summary, .grandsummary, .notes{
 		width: 1450px;
 	}
 
@@ -165,11 +194,15 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 	}
 
 	.headline{
-		font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
 		font-size : 40px;
 	}
 
-	.headline, table.innterTable tr > td:nth-child(1), table.innterTable tr> td:nth-child(2), .grandsummary td, .subheading2{
+	.headline2{
+		font-size : 28px;
+		color: gray;		
+	}
+
+	.headline, table.innterTable tr > td:nth-child(1), table.innterTable tr> td:nth-child(2), .grandsummary td, .subheading2, .headline2{
 		font-weight: 700;
 	}
 
@@ -196,14 +229,11 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
 	table.grandsummary tr> td:nth-child(1){
 		width: 17%;
-		border: 1px solid gray;
 		padding-bottom: 20px;
-		border-bottom: none;
 		text-align: left;
-
 	}
 
-	table.grandsummary tr:nth-child(1n+3) td, table#summary th{
+	table.grandsummary tr:nth-child(1n+3) td, table#summary th, .notes{
 		font-size: 15px;
 	}
 
@@ -213,31 +243,44 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 		font-weight: 400;
 	}
 
+	table.grandsummary thead tr:nth-child(2){
+		border-bottom: none;
+	}
+
+	table.grandsummary tbody tr:nth-child(1){
+		border-top: none;
+	}
+
 	table.grandsummary tr:nth-child(4) td:nth-child(1n+2){
 		text-align: right;
 		padding-right: 40px;
 	}
 
 	table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
-		border-left: none;
-		border-right: none;
+		border-left: 0px;
+		border-right: 0px;
 	}
 
 	.grandsummary{
 		border-collapse: collapse;
-		border: 2px solid gray;
 		column-span: 4;
 		page-break-after: always;
 	}
 
-	.grandsummary td, table#summary, table#summary tr td,
-	table#summary th, table#performance tr td, table#performance th, table#performance{
-		border: 1px solid gray;
+	table#performance, table#summary, table#grand, .grandsummary {
+		border: 2px solid gray;
+	}
+
+
+	.grandsummary td, table#summary tr td,
+	table#summary thead th, table#performance tbody tr td, table#performance thead th{
+		border: 1px solid gray !important;
 		border-collapse: collapse;
 	}
 
 	.grandsummary td{
 		font-size: 18px;
+
 	}
 
 	table#summary tr td {
@@ -253,15 +296,15 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 	table#performance tr td, table#performance th, table#summary th, table#summary th {
 		text-align: center;
 		padding: 10px 0;
-
 	}
 
-	table#performance th{
+	table#performance thead th{
 		font-size: 22px;
 	}
 
-	table#performance, table#summary, table#grand {
-		border: solid 2px gray;
+	.notes{
+		line-height: 22px;
+		padding-top: 20px;
 	}
 
 	#legal{
