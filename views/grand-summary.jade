@@ -1,6 +1,7 @@
 // Grand Summary Table
 table.grandsummary
-  th.subheadline(colspan='4') GRAND SUMMARY
+  thead
+    th.subheadline(colspan='4') GRAND SUMMARY
   tr.theader
     td
     td Yield (BU*56#)/A)
@@ -8,9 +9,11 @@ table.grandsummary
     td GROSS INCOME ($/A)
   tr
     td(valign='bottom')
-      | Check Products:
+      img(src='/images/orange.png' style="paddingBottom: 10px")
+      | &nbsp;&nbsp; Check Products:
       br
-      | 			Other Products:
+      img(src='/images/green.png')
+      | &nbsp;&nbsp; Other Products:
     td
       img(src='/images/yield.jpg')
     td
@@ -21,37 +24,37 @@ table.grandsummary
     td
       | Check Products
       br
-      | 				Others
+      | Others
       br
-      | 				Difference
+      | Difference
     td
       | 132.1
       br
-      | 				140.8
+      | 140.8
       br
-      | 				8.7
+      | 8.7
     td
       | 17.5
       br
-      | 				18.5
+      | 18.5
       br
-      | 				1.0
+      | 1.0
     td
       | $481.96
       br
-      | 				$508.27
+      | $508.27
       br
-      | 				$26.31
+      | $26.31
   tr
     td
       | Assumed Selling Price Per Unit:
       br
-      | 				Assumed Drying Cost :
+      | Assumed Drying Cost :
     td
       | $ 3.75/ BU
       br
-      | 				$ 0.04/ Point Moisture over 15%
+      | $ 0.04/ Point Moisture over 15%
     td
-      | Yeild Values are adjusted to 15% moisture.
+      | Yield Values are adjusted to 15% moisture.
     td
 br

@@ -12,6 +12,10 @@ body{
 	font-size : 40px;	
 }
 
+.brandlogo{
+	max-width: 200px !important;
+}
+
 .headline, .headline2,
 .subheadline, table#summary th, table#performance th,
 table.innterTable tr> td:nth-child(1), .grandsummary td{
@@ -169,13 +173,21 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
     thead {
     	display:table-header-group;
-    	background-color: #f5f5f5 !important;
-    	-webkit-print-color-adjust: exact;
+    	background-color: #A9A9A9 !important;
+    	-webkit-print-color-adjust: exact !important;
+    }
+
+    .brandlogo{
+    	max-width: 200px !important;
+		max-height: 500px !important;
+		float:right;
+		z-index: 1000;
+		margin-top: -19px;
     }
 
     table#performance thead tr td{    
     	display:table-header-group;
-    	background-color: #cccccc !important;
+    	background-color: #A9A9A9 !important;
     	-webkit-print-color-adjust: exact;
     }
 
@@ -195,6 +207,8 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
 	.headline{
 		font-size : 40px;
+		height: 40px;
+		padding-top: 25px;
 	}
 
 	.headline2{
@@ -309,8 +323,10 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
 	#legal{
 		display: block;
-		width: 125%;
-		height: 125%;
 		page-break-before: always;
+	}
+	.legalimgsize{
+		min-width: 1450px !important;
+		max-height: 1100px !important;
 	}
 }
