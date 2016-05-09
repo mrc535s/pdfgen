@@ -1,72 +1,12 @@
 table#summary
   thead
     tr
-      th(colspan='4') CHECK PRODUCTS
-      th(colspan='4') OTHER PRODUCTS
-      th(colspan='3') PERFORMANCE
-      th(colspan='3') YIELD Bu(56#)/A
-      th(colspan='3') HARVEST MOISTURE
-      th(colspan='3') GROSS INCOME ($/A)
+      each category in tableData.categories
+        th(colspan='#{category.colspan}') #{category.title}
   tr
-    td Check Brand
-    td Product Brand
-    td Traits
-    td RM
-    td Comp Brand
-    td Product Brand
-    td Traits
-    td RM
-    td # of Comps
-    td Years
-    td Win%
-    td Check
-    td Other
-    td Adv.
-    td Check
-    td Other
-    td Adv.
-    td Check
-    td Other
-    td Adv.
-  tr
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-  tr
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
-    td
+    each column in tableData.columns
+      td #{column.title}
+    each row in tableData.rows
+      tr
+        each column in tableData.columns
+          td #{row[column.dataKey]}
