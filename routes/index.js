@@ -72,7 +72,7 @@ function genPDF(data, req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
-  wkhtmltopdf(fullUrl + 'pdf', {
+  wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
       orientation: 'landscape',
       printMediaType: true,
