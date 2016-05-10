@@ -2779,9 +2779,9 @@ router.get('/', function (req, res, next) {
 
 /* POST home page. */
 router.post('/', function (req, res, next) {
-  // var response = JSON.parse(req.body.data);
-  // console.log(response.data);
-  var dataJSON = JSON.stringify(sampleData);
+  var response = JSON.parse(req.body.data);
+  //console.log(response.data);
+  var dataJSON = JSON.stringify(response.data);
   var dataObj = {
     data: dataJSON
   };
