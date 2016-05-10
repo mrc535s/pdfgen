@@ -2835,8 +2835,9 @@ function mapper(y, x) {
 function genPDF(data) {
   //var customHeader = {'Content-Type': 'application/x-www-form-urlencoded'}
   //var url = 'https://immense-springs-99065.herokuapp.com/';
-  var url = 'http://localhost:5000/'
+  //var url = 'http://localhost:5000/'
 
+  var url = 'https://warm-badlands-52758.herokuapp.com/';
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
   wkhtmltopdf(url + 'pdf', {
