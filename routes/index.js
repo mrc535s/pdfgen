@@ -41,7 +41,7 @@ router.post('/pdf/', function (req, res, next) {
 
 function startup(data, res, req) {
   var pdfGen = genPDF(data, req);
-  console.log('Data: ' + data);
+  //console.log('Data: ' + data);
   pdfGen.on('finish', function () {
     res.download('BriefSummary.pdf', 'BriefSummary.pdf');
   });
@@ -72,6 +72,8 @@ function mapper(y, x) {
 function genPDF(data, req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
   var write = fs.createWriteStream('BriefSummary.pdf');
+
+  console.log(data.charts[0]);
   // URL
   wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
