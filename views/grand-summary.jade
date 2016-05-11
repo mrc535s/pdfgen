@@ -14,12 +14,9 @@ table.grandsummary
       br
       img(src='/images/green.png')
       | &nbsp;&nbsp; Other Products:
-    td
-      img(src='/images/yield.jpg')
-    td
-      img(src='/images/harvest.jpg')
-    td
-      img(src='/images/gross.jpg')
+    each chart in charts
+      td
+        img(src='#{chart}')
   tr
     td
       | Check Products

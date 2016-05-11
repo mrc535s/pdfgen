@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var wkhtmltopdf = require('wkhtmltopdf');
-var sampleData = getSampleData(); 
+var sampleData = getSampleData();
 
 
 /* GET home page. */
@@ -34,7 +34,7 @@ router.get('/pdf/', function (req, res, next) {
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
 
-  console.log(data);
+  //console.log(data);
   //var data = sampleData;
   res.render('pdf', data);
 });
