@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var wkhtmltopdf = require('wkhtmltopdf');
+var sampleData = getSampleData(); 
 
 
 /* GET home page. */
@@ -15,7 +16,7 @@ router.get('/', function (req, res, next) {
 
 /* POST home page. */
 router.post('/', function (req, res, next) {
-  var sampleData = getSampleData(); // use this if you want to call directly.
+  // use this if you want to call directly.
   var response = JSON.parse(req.body.data);
   var dataJSON = JSON.stringify(response.data);
   var dataObj = {
