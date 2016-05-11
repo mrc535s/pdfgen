@@ -14,8 +14,9 @@ table.grandsummary
       br
       img(src='/images/green.png')
       | &nbsp;&nbsp; Other Products:
-    td
-      #{charts}
+    each chart in charts
+      td
+        img(src='#{chart.src}')
   tr
     td
       | Check Products
