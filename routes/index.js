@@ -34,6 +34,8 @@ router.get('/pdf/', function (req, res, next) {
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
 
+  console.log("Charts": data.charts);
+
   //console.log(data);
   //var data = sampleData;
   res.render('pdf', data);
@@ -72,8 +74,6 @@ function mapper(y, x) {
 function genPDF(data, req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
   var write = fs.createWriteStream('BriefSummary.pdf');
-
-  console.log(data.charts);
   // URL
   wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
