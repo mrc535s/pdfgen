@@ -34,7 +34,7 @@ router.get('/pdf/', function (req, res, next) {
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
 
-  console.log("Charts": data.charts);
+  console.log("Charts: " + data.charts);
 
   //console.log(data);
   //var data = sampleData;
