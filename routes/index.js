@@ -5,7 +5,7 @@ var wkhtmltopdf = require('wkhtmltopdf');
 var sampleData = getSampleData();
 var dauria = require('dauria');
 
-var base = 'public';
+var base = __dirname + '/../public';
 var imageDir = '/tmp/';
 var images;
 
@@ -22,6 +22,7 @@ router.get('/', function (req, res, next) {
 /* POST home page. */
 router.post('/', function (req, res, next) {
   // use this if you want to call directly.
+  console.log();
   var response = req.body.data !== undefined ? JSON.parse(req.body.data) : sampleData;
   var data = mapData(response.data);
   startup(data, res, req);
