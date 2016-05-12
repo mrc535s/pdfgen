@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var wkhtmltopdf = require('wkhtmltopdf');
-var sampleData = getSampleData();
 var dauria = require('dauria');
 var appRoot = require('app-root-path');
+var rk = require('randomkey');
 
+// app level variables
+var sampleData = getSampleData();
 var base = appRoot + '/public';
 var imageDir = '/tmp/';
 var images;
+var genKey = rk(16, rk.safe); // so users won't clash image creation.
 
 
 /* GET home page. */
@@ -22,8 +25,6 @@ router.get('/', function (req, res, next) {
 
 /* POST home page. */
 router.post('/', function (req, res, next) {
-  // use this if you want to call directly.
-  console.log();
   var response = req.body.data !== undefined ? JSON.parse(req.body.data) : sampleData;
   var data = mapData(response.data);
   startup(data, res, req);
@@ -42,9 +43,8 @@ function mapData (data) {
 
 function mapChartImages(charts) {
   return charts.map(function(chart, key) {
-    var name = key + '.png';
+    var name = genKey+ key + '.png';
     createChartImage(name, chart.src);
-    console.log(name);
     return imageDir + name;
   });
 }
@@ -63,13 +63,11 @@ router.get('/pdf/', function (req, res, next) {
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
   res.render('pdf', data);
-  //console.log(data);
-  //var data = sampleData;
-
 });
 
 function deleteImage(img) {
   fs.unlinkSync(base + img);
+  console.log(base + img + " deleted");
 }
 
 function startup(data, res, req) {
