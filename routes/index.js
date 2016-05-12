@@ -4,8 +4,9 @@ var fs = require('fs');
 var wkhtmltopdf = require('wkhtmltopdf');
 var sampleData = getSampleData();
 var dauria = require('dauria');
+var appRoot = require('app-root-path');
 
-var base = __dirname + '/../public';
+var base = appRoot + '/public';
 var imageDir = '/tmp/';
 var images;
 
