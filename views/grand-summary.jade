@@ -14,13 +14,9 @@ table.grandsummary
       br
       img(src='/images/green.png')
       | &nbsp;&nbsp; Other Products:
-    td
-      a
-        img(style="max-width:100%" src='#{charts[0].src}')
-    td
-      img(style="max-width:100%" src='#{charts[1].src}')
-    td
-      img(style="max-width:100%" src='#{charts[2].src}')
+    each image in images
+      td
+        img(style="max-width:100%" src='#{image}')
   tr
     td
       | Check Products

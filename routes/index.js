@@ -3,6 +3,10 @@ var router = express.Router();
 var fs = require('fs');
 var wkhtmltopdf = require('wkhtmltopdf');
 var sampleData = getSampleData();
+var dauria = require('dauria');
+
+var base = 'public';
+var imageDir = '/tmp/';
 
 
 /* GET home page. */
@@ -17,14 +21,35 @@ router.get('/', function (req, res, next) {
 /* POST home page. */
 router.post('/', function (req, res, next) {
   // use this if you want to call directly.
-  //var response = JSON.parse(req.body.data);
-  var dataJSON = JSON.stringify(sampleData);
-  var dataObj = {
-    data: dataJSON
-  };
-  var data = mapObj(dataObj);
+  var response = req.body.data !== undefined ? JSON.parse(req.body.data) : sampleData;
+  var data = mapData(response.data);
   startup(data, res, req);
 });
+
+function mapData (data) {
+  var dataJSON, dataObj;
+  data.images = mapChartImages(data.charts);
+  dataJSON = JSON.stringify(data);
+  dataObj = {
+    data: dataJSON
+  };
+  return mapObj(dataObj);
+}
+
+function mapChartImages(charts) {
+  return charts.map(function(chart, key) {
+    var name = key + '.png';
+    createChartImage(name, chart.src);
+    console.log(name);
+    return imageDir + name;
+  });
+}
+
+function createChartImage(name, img) {
+  var img = dauria.parseDataURI(img);
+  fs.writeFileSync(base + imageDir + name, img.buffer, 'binary');
+  console.log(name + ' Created');
+}
 
 router.get('/pdf/', function (req, res, next) {
   var data = sampleData;
@@ -33,17 +58,18 @@ router.get('/pdf/', function (req, res, next) {
 
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
-
-  console.log("Charts: " + data.charts);
-
+  res.render('pdf', data);
   //console.log(data);
   //var data = sampleData;
-  res.render('pdf', data);
+
 });
+
+function deleteImage(img) {
+  fs.unlinkSync('public' + img);
+}
 
 function startup(data, res, req) {
   var pdfGen = genPDF(data, req);
-  //console.log('Data: ' + data);
   pdfGen.on('finish', function () {
     res.download('BriefSummary.pdf', 'BriefSummary.pdf');
   });
@@ -88,6 +114,7 @@ function genPDF(data, req) {
 
 function getSampleData() {
   return {
+      data: {
         "spatialFilter": {
           "src": "http://maps-t.monsanto.com/arcgis/rest/directories/arcgisoutput/Utilities/PrintingTools_GPServer/_ags_815ba20d2e9b46b0b1a7a0ef647192a3.png"
         },
@@ -970,6 +997,7 @@ function getSampleData() {
             "$$hashKey": "object:8674"
           }]
         }
+      }
   };
 }
 
