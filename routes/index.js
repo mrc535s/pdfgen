@@ -110,7 +110,8 @@ function genPDF(data, url) {
       pageSize: 'letter',
       orientation: 'landscape',
       printMediaType: true,
-      post: data
+      post: data,
+      footerHtml: base + '/footer.html'
     })
     .pipe(write);
 

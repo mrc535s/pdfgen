@@ -9,7 +9,7 @@ body{
 }
 
 .headline{
-	font-size : 40px;	
+	font-size : 40px;
 }
 
 .brandlogo{
@@ -24,13 +24,13 @@ table.innterTable tr> td:nth-child(1), .grandsummary td{
 
 .headline2{
 	font-size : 32px;
-	color: gray;	
+	color: gray;
 }
 
 .subheadline, table#summary th, table#performance th{
-	font-size : 20px;	
+	font-size : 20px;
 	background-color: cccccc;
-	padding: 10px 0;	
+	padding: 10px 0;
 }
 
 .prodinfo{
@@ -42,7 +42,7 @@ table.innterTable tr> td:nth-child(1), .grandsummary td{
 	margin-bottom: 20px;
 }
 
-table.innterTable tr> td:nth-child(1){	
+table.innterTable tr> td:nth-child(1){
 	padding: 6px 6px;
 	min-width: 150px;
 }
@@ -87,7 +87,7 @@ table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
 
 .grandsummary td{
 	border: 1px solid gray;
-	font-size: 18px;	
+	font-size: 18px;
 }
 
 table.grandsummary tr  td {
@@ -162,12 +162,12 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 		font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
 	}
 
-	table{ 
+	table{
 		page-break-inside:auto;
 	}
-    
+
     tr{
-    	page-break-inside:avoid; 
+    	page-break-inside:avoid;
     	page-break-after:auto;
     }
 
@@ -185,13 +185,13 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 		margin-top: -19px;
     }
 
-    table#performance thead tr td{    
+    table#performance thead tr td{
     	display:table-header-group;
     	background-color: #A9A9A9 !important;
     	-webkit-print-color-adjust: exact;
     }
 
-    tfoot { 
+    tfoot {
     	display:table-footer-group;
     }
 
@@ -213,7 +213,7 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 
 	.headline2{
 		font-size : 28px;
-		color: gray;		
+		color: gray;
 	}
 
 	.headline, table.innterTable tr > td:nth-child(1), table.innterTable tr> td:nth-child(2), .grandsummary td, .subheading2, .headline2{
