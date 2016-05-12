@@ -7,6 +7,7 @@ var dauria = require('dauria');
 
 var base = 'public';
 var imageDir = '/tmp/';
+var images;
 
 
 /* GET home page. */
@@ -29,6 +30,7 @@ router.post('/', function (req, res, next) {
 function mapData (data) {
   var dataJSON, dataObj;
   data.images = mapChartImages(data.charts);
+  images = data.images;
   dataJSON = JSON.stringify(data);
   dataObj = {
     data: dataJSON
@@ -65,12 +67,16 @@ router.post('/pdf/', function (req, res, next) {
 });
 
 function deleteImage(img) {
-  fs.unlinkSync('public' + img);
+  fs.unlinkSync(base + img);
 }
 
 function startup(data, res, req) {
-  var pdfGen = genPDF(data, req);
+  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var pdfGen = genPDF(data, url);
   pdfGen.on('finish', function () {
+    images.forEach(function(img) {
+      deleteImage(img);
+    })
     res.download('BriefSummary.pdf', 'BriefSummary.pdf');
   });
 }
@@ -97,8 +103,7 @@ function mapper(y, x) {
   });
 }
 
-function genPDF(data, req) {
-  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+function genPDF(data, url) {
   var write = fs.createWriteStream('BriefSummary.pdf');
   // URL
   wkhtmltopdf(url + 'pdf', {
