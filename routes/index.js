@@ -10,7 +10,7 @@ var rk = require('randomkey');
 var sampleData = getSampleData();
 var base = appRoot + '/public';
 var imageDir = '/tmp/';
-var images;
+var images = {};
 var genKey = rk(16, rk.safe); // so users won't clash image creation.
 
 
@@ -30,30 +30,6 @@ router.post('/', function (req, res, next) {
   startup(data, res, req);
 });
 
-function mapData (data) {
-  var dataJSON, dataObj;
-  data.images = mapChartImages(data.charts);
-  images = data.images;
-  dataJSON = JSON.stringify(data);
-  dataObj = {
-    data: dataJSON
-  };
-  return mapObj(dataObj);
-}
-
-function mapChartImages(charts) {
-  return charts.map(function(chart, key) {
-    var name = genKey+ key + '.png';
-    createChartImage(name, chart.src);
-    return imageDir + name;
-  });
-}
-
-function createChartImage(name, img) {
-  var img = dauria.parseDataURI(img);
-  fs.writeFileSync(base + imageDir + name, img.buffer, 'binary');
-  console.log(name + ' Created');
-}
 
 router.get('/pdf/', function (req, res, next) {
   var data = sampleData;
@@ -65,20 +41,53 @@ router.post('/pdf/', function (req, res, next) {
   res.render('pdf', data);
 });
 
+function mapData (data) {
+  var dataJSON, dataObj;
+  data.images = mapChartImages(data.charts);
+  images.map = mapImage(data.spatialFilter.src);
+  images.charts = data.images;
+  dataJSON = JSON.stringify(data);
+  dataObj = {
+    data: dataJSON
+  };
+  return mapObj(dataObj);
+}
+
+function mapChartImages(charts) {
+  return charts.map(function(chart, key) {
+    var name = genKey+ key + '.png';
+    createImage(name, chart.src);
+    return imageDir + name;
+  });
+}
+
+function mapImage(img) {
+  var key = genKey + '-map.png';
+  createImage(key, img);
+  return key;
+}
+
+function createImage(name, img) {
+  var bufferImg = dauria.parseDataURI(img);
+  fs.writeFileSync(base + imageDir + name, bufferImg.buffer, 'binary');
+  console.log(name + ' Created');
+}
+
 function deleteImage(img) {
   fs.unlinkSync(base + img);
   console.log(base + img + " deleted");
 }
 
+function cleanup() {
+  images.forEach(function(img) {
+    deleteImage(img);
+  });
+}
+
 function startup(data, res, req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
   var pdfGen = genPDF(data, url);
-  pdfGen.on('finish', function () {
-    images.forEach(function(img) {
-      deleteImage(img);
-    })
-    res.download('BriefSummary.pdf', 'BriefSummary.pdf');
-  });
+  cleanup();
 }
 
 function mapObj(o) {
