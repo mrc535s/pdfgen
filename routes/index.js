@@ -34,6 +34,8 @@ router.get('/pdf/', function (req, res, next) {
   //For testing only --- !make sure you clean up your image files!
   var response = assignData(req);
   response.data.images = createImages(response.data);
+  response.data.charts = [];
+  response.data.spatialFilter = {};
   console.log(response.data.images);
   var data = response.data;
   res.render('pdf', data);
@@ -57,7 +59,6 @@ function createImages (data) {
 
 function mapData (data) {
   var dataJSON, dataObj;
-  data.images = createImages(data);
   images = data.images;
   dataJSON = JSON.stringify(data);
   dataObj = {
