@@ -33,12 +33,14 @@ router.post('/', function (req, res, next) {
 router.get('/pdf/', function (req, res, next) {
   //For testing only --- !make sure you clean up your image files!
   var response = assignData(req);
-  response.data.images = createImages(response.data);
-  response.data.charts = [];
-  response.data.spatialFilter = {};
-  console.log(response.data.images);
-  var data = response.data;
-  res.render('pdf', data);
+  createImages(response.data).then(function(images) {
+    response.data.images = images;
+    response.data.charts = [];
+    response.data.spatialFilter = [];
+    console.log(response.data.images);
+    var data = response.data;
+    res.render('pdf', data);
+  });
 });
 
 router.post('/pdf/', function (req, res, next) {
@@ -51,6 +53,10 @@ function assignData(req) {
 }
 
 function createImages (data) {
+  var p = new Promise(function(resolve, reject) {
+      resolve(createImages(response.data));  // fulfilled successfully
+   return p;
+});
   return {
     charts: mapChartImages(data.charts),
     spatial: spatialImage(data.spatialFilter.src)
