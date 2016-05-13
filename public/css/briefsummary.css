@@ -178,7 +178,7 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
     }
 
     .brandlogo{
-    	max-width: 200px !important;
+    	max-width: 120px !important;
 		max-height: 500px !important;
 		float:right;
 		z-index: 1000;
