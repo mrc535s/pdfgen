@@ -15,36 +15,32 @@ var genKey = rk(16, rk.safe); // so users won't clash image creation.
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  var data = [
-    ["title", "1"]
-  ];
   res.render('index', sampleData);
   // startup(data, res);
+});
+
+
+router.get('/pdf/', function (req, res, next) {
+  //For testing only --- !make sure you clean up your image files!
+  var response = assignData(req);
+  response.data.images = createImages(response.data);
+  console.log(response.data.images);
+  var data = response.data;
+  res.render('pdf', data);
 });
 
 /* POST home page. */
 router.post('/', function (req, res, next) {
   var response = assignData(req);
-  response.data.images = createImages(response.data);
-  var data = mapData(response.data);
+  var data;
+  response.data.images = createImages(response.data)
+  data = mapData(response.data);
   startup(data, res, req);
-});
-
-router.get('/pdf/', function (req, res, next) {
-  //For testing only --- !make sure you clean up your image files!
-  var response = assignData(req);
-  createImages(response.data).then(function(images) {
-    response.data.images = images;
-    response.data.charts = [];
-    response.data.spatialFilter = [];
-    console.log(response.data.images);
-    var data = response.data;
-    res.render('pdf', data);
-  });
 });
 
 router.post('/pdf/', function (req, res, next) {
   var data = JSON.parse(req.body.data);
+   console.log('Charts: ' + data.charts[0].src);
   res.render('pdf', data);
 });
 
@@ -53,10 +49,6 @@ function assignData(req) {
 }
 
 function createImages (data) {
-  var p = new Promise(function(resolve, reject) {
-      resolve(createImages(response.data));  // fulfilled successfully
-   return p;
-});
   return {
     charts: mapChartImages(data.charts),
     spatial: spatialImage(data.spatialFilter.src)
