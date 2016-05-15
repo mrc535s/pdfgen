@@ -25,8 +25,6 @@ router.get('/pdf/', function (req, res, next) {
   //For testing only --- !make sure you clean up your image files!
   var response = assignData(req);
   var data;
-  response.data.images = createImages(response.data);
-  console.log(response.data.images);
   data = response.data;
   res.render('pdf', data);
 });
@@ -34,14 +32,13 @@ router.get('/pdf/', function (req, res, next) {
 /* POST home page. */
 router.post('/', function (req, res, next) {
   var response = assignData(req);
-  var data;
-  response.data.images = createImages(response.data);
+  var data = [];
   
   fs.writeFile(dataFile, JSON.stringify(response.data), function(err){
     if(err){
       console.log(err);
     } else {
-      data = mapData(response.data);
+      // data = mapData(response.data);
       startup(data, res, req);
     }
    });
@@ -52,7 +49,6 @@ router.post('/pdf/', function (req, res, next) {
   fs.readFile(dataFile, (err, data) => {
     if (err) throw err;
     data = JSON.parse(data);
-    console.log(data);
     res.render('pdf', data);
   });
 });
@@ -63,7 +59,6 @@ function assignData(req) {
 
 function createImages (data) {
   return {
-    charts: mapChartImages(data.charts),
     spatial: spatialImage(data.spatialFilter.src)
   };
 }
@@ -104,10 +99,10 @@ function deleteFile(file) {
 }
 
 function cleanup() {
-  images.charts.forEach(function(img) {
-    deleteFile(base + img);
-  });
-  deleteFile(base + images.spatial);
+  // images.forEach(function(img) {
+  //   deleteFile(base + img);
+  // });
+  // deleteFile(base + images.spatial);
   deleteFile(dataFile);
 }
 
@@ -144,7 +139,6 @@ function mapper(y, x) {
 
 function genPDF(data, url) {
   var write = fs.createWriteStream('BriefSummary.pdf');
-  var data = [];
   // URL
   wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
