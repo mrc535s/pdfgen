@@ -9,9 +9,10 @@ var rk = require('randomkey');
 // app level variables
 var sampleData = getSampleData();
 var base = appRoot + '/public';
-var imageDir = '/tmp/';
+var tmpDir = '/tmp/';
 var images = {};
 var genKey = rk(16, rk.safe); // so users won't clash image creation.
+var dataFile = base + tmpDir + "data_" + genKey +  ".json";
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -23,9 +24,10 @@ router.get('/', function (req, res, next) {
 router.get('/pdf/', function (req, res, next) {
   //For testing only --- !make sure you clean up your image files!
   var response = assignData(req);
+  var data;
   response.data.images = createImages(response.data);
   console.log(response.data.images);
-  var data = response.data;
+  data = response.data;
   res.render('pdf', data);
 });
 
@@ -33,15 +35,26 @@ router.get('/pdf/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   var response = assignData(req);
   var data;
-  response.data.images = createImages(response.data)
-  data = mapData(response.data);
-  startup(data, res, req);
+  response.data.images = createImages(response.data);
+  
+  fs.writeFile(dataFile, JSON.stringify(response.data), function(err){
+    if(err){
+      console.log(err);
+    } else {
+      data = mapData(response.data);
+      startup(data, res, req);
+    }
+   });
 });
 
 router.post('/pdf/', function (req, res, next) {
-  var data = JSON.parse(req.body.data);
-   console.log('Charts: ' + data.charts[0].src);
-  res.render('pdf', data);
+  var data;
+  fs.readFile(dataFile, (err, data) => {
+    if (err) throw err;
+    data = JSON.parse(data);
+    console.log(data);
+    res.render('pdf', data);
+  });
 });
 
 function assignData(req) {
@@ -69,32 +82,33 @@ function mapChartImages(charts) {
   return charts.map(function(chart, key) {
     var name = genKey+ key + '.png';
     createImage(name, chart.src);
-    return imageDir + name;
+    return tmpDir + name;
   });
 }
 
 function spatialImage(img) {
   var key = genKey + '-map.png';
   createImage(key, img);
-  return imageDir + key;
+  return tmpDir + key;
 }
 
 function createImage(name, img) {
   var bufferImg = dauria.parseDataURI(img);
-  fs.writeFileSync(base + imageDir + name, bufferImg.buffer, 'binary');
+  fs.writeFileSync(base + tmpDir + name, bufferImg.buffer, 'binary');
   console.log(name + ' Created');
 }
 
-function deleteImage(img) {
-  fs.unlinkSync(base + img);
-  console.log(base + img + " deleted");
+function deleteFile(file) {
+  fs.unlinkSync(file);
+  console.log(file + " deleted");
 }
 
 function cleanup() {
   images.charts.forEach(function(img) {
-    deleteImage(img);
+    deleteFile(base + img);
   });
-  deleteImage(images.spatial);
+  deleteFile(base + images.spatial);
+  deleteFile(dataFile);
 }
 
 function startup(data, res, req) {
@@ -130,6 +144,7 @@ function mapper(y, x) {
 
 function genPDF(data, url) {
   var write = fs.createWriteStream('BriefSummary.pdf');
+  var data = [];
   // URL
   wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
