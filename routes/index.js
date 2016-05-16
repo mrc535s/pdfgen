@@ -50,6 +50,7 @@ router.post('/pdf/', function (req, res, next) {
   fs.readFile(dataFile, (err, data) => {
     if (err) throw err;
     data = JSON.parse(data);
+    console.log('Sent Data: ' + data);
     res.render('pdf', data);
   });
 });
