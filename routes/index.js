@@ -55,6 +55,7 @@ router.post('/pdf/', function (req, res, next) {
 });
 
 function assignData(req) {
+  console.log("Data: " + req.body.data);
   return req.body.data !== undefined ? JSON.parse(req.body.data) : sampleData;
 }
 
