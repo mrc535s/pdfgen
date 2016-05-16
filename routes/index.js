@@ -108,7 +108,6 @@ function cleanup() {
   // });
   // deleteFile(base + images.spatial);
   deleteFile(dataFile);
-  deleteFile(appRoot + '/' + pdf);
 }
 
 function startup(data, res, req) {
