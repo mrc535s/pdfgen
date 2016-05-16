@@ -10,9 +10,10 @@ var rk = require('randomkey');
 var sampleData = getSampleData();
 var base = appRoot + '/public';
 var tmpDir = '/tmp/';
-var images = {};
 var genKey = rk(16, rk.safe); // so users won't clash image creation.
 var dataFile = base + tmpDir + "data_" + genKey +  ".json";
+  
+var phantom = require('phantom');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -108,11 +109,53 @@ function cleanup() {
 
 function startup(data, res, req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var pdfGen = genPDF(data, url);
-  pdfGen.on('finish', function () {
-    cleanup();
-    res.download('BriefSummary.pdf', 'BriefSummary.pdf');
-  });
+
+var sitepage = null;
+var phInstance = null;
+phantom.create()
+    .then(instance => {
+        phInstance = instance;
+        return instance.createPage();
+    })
+    .then(page => {
+        sitepage = page;
+         sitepage.property('paperSize',  {
+          format: 'Letter',
+          orientation: 'landscape'
+        });
+       sitepage.property('zoomFactor', 0.5625);
+       return sitepage.open(url + 'pdf', 'POST');
+    })
+    .then(status => {
+        console.log(status);
+        return sitepage.render('BriefSummary_' + genKey + '.pdf', {format: 'pdf', quality: '100'});
+    })
+    .then(content => {
+        //console.log(content);
+        sitepage.close();
+        phInstance.exit();
+        res.download('BriefSummary_' + genKey + '.pdf');    
+    })
+    .catch(error => {
+        console.log(error);
+        phInstance.exit();
+    });
+}
+
+
+function genPDF(data, url) {
+  var write = fs.createWriteStream('BriefSummary.pdf');
+  // URL
+  // wkhtmltopdf(url + 'pdf', {
+  //     pageSize: 'letter',
+  //     orientation: 'landscape',
+  //     printMediaType: true,
+  //     post: data,
+  //     footerHtml: base + '/footer.html'
+  //   })
+  //   .pipe(write);
+
+  return write;
 }
 
 function mapObj(o) {
@@ -135,21 +178,6 @@ function mapper(y, x) {
     }
     return [k, x[k]]
   });
-}
-
-function genPDF(data, url) {
-  var write = fs.createWriteStream('BriefSummary.pdf');
-  // URL
-  wkhtmltopdf(url + 'pdf', {
-      pageSize: 'letter',
-      orientation: 'landscape',
-      printMediaType: true,
-      post: data,
-      footerHtml: base + '/footer.html'
-    })
-    .pipe(write);
-
-  return write;
 }
 
 function getSampleData() {
