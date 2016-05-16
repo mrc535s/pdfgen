@@ -35,10 +35,10 @@ table.grandsummary
       br
       | Assumed Drying Cost :
     td
-      | $ 3.75/ BU
+      | $ #{incomeData.sellingPrice}/ BU
       br
-      | $ 0.04/ Point Moisture over 15%
+      | $ #{incomeData.dryingCost}/ Point Moisture over #{incomeData.baseMoisture}%
     td
-      | Yield Values are adjusted to 15% moisture.
+      | Yield Values are adjusted to #{incomeData.baseMoisture}% moisture.
     td
 br

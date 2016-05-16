@@ -191,6 +191,11 @@ function mapper(y, x) {
 function getSampleData() {
   return {
       data: {
+        incomeData: {
+          baseMoisture: 13,
+          dryingCost: 0.04,
+          sellingPrice: 8.75
+        },
         performance: {
           comparisons: 8,
           won: 7,
