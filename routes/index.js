@@ -116,7 +116,7 @@ function startup(data, res, req) {
 var pdfGen = genPDF(data, url);
   pdfGen.on('finish', function () {
     cleanup();
-    res.download('BriefSummary_' + genKey + '.pdf', 'BriefSummary.pdf');
+    res.download('BriefSummary_' + genKey + '.pdf', 'BriefSummary_' + genKey + '.pdf');
   });
 
 // var sitepage = null;
