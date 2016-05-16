@@ -12,6 +12,7 @@ var base = appRoot + '/public';
 var tmpDir = '/tmp/';
 var genKey = rk(16, rk.safe); // so users won't clash image creation.
 var dataFile = base + tmpDir + "data_" + genKey +  ".json";
+var pdf = 'BriefSummary_' + genKey + '.pdf';
   
 var phantom = require('phantom');
 
@@ -33,13 +34,13 @@ router.get('/pdf/', function (req, res, next) {
 /* POST home page. */
 router.post('/', function (req, res, next) {
   var response = assignData(req);
-  var data = [];
+  var data = {data: {data: 'data'}};
   
   fs.writeFile(dataFile, JSON.stringify(response.data), function(err){
     if(err){
       console.log(err);
     } else {
-      // data = mapData(response.data);
+      data = mapData(data);
       startup(data, res, req);
     }
    });
@@ -107,6 +108,7 @@ function cleanup() {
   // });
   // deleteFile(base + images.spatial);
   deleteFile(dataFile);
+  deleteFile(appRoot + '/' + pdf);
 }
 
 function startup(data, res, req) {
@@ -115,8 +117,8 @@ function startup(data, res, req) {
   
 var pdfGen = genPDF(data, url);
   pdfGen.on('finish', function () {
+    res.download(pdf, pdf);
     cleanup();
-    res.download('BriefSummary_' + genKey + '.pdf', 'BriefSummary_' + genKey + '.pdf');
   });
 
 // var sitepage = null;
@@ -152,7 +154,7 @@ var pdfGen = genPDF(data, url);
 
 
 function genPDF(data, url) {
-  var write = fs.createWriteStream('BriefSummary_' + genKey + '.pdf');
+  var write = fs.createWriteStream(pdf);
   wkhtmltopdf(url + 'pdf', {
       pageSize: 'letter',
       orientation: 'landscape',
