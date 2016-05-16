@@ -17,31 +17,18 @@ table.grandsummary
     each image in charts
       td
         img(style="max-width:100%" src='#{image.src}')
-  tr
-    td
-      | Check Products
-      br
-      | Others
-      br
-      | Difference
-    td
-      | 132.1
-      br
-      | 140.8
-      br
-      | 8.7
-    td
-      | 17.5
-      br
-      | 18.5
-      br
-      | 1.0
-    td
-      | $481.96
-      br
-      | $508.27
-      br
-      | $26.31
+  tr 
+    td Check Products
+    each checkdata in grandSummary.checkProduct
+      td #{checkdata}
+  tr 
+    td Others
+    each otherdata in grandSummary.otherProduct
+      td #{otherdata}
+  tr 
+    td Difference
+    each diffdata in grandSummary.difference
+      td #{diffdata}
   tr
     td
       | Assumed Selling Price Per Unit:
