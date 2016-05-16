@@ -136,6 +136,10 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 	/*display: none; */
 }
 
+.isSummary {
+	background-color: #A9A9A9
+}
+
 
 
 
@@ -296,6 +300,10 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 	.grandsummary td{
 		font-size: 18px;
 
+	}
+	
+	.isSummary {
+		-webkit-print-color-adjust: exact;
 	}
 
 	table#summary tr td {

@@ -7,6 +7,12 @@ table#summary
     each column in tableData.columns
       td #{column.title}
     each row in tableData.rows
-      tr
-        each column in tableData.columns
-          td #{row[column.dataKey]}
+      if row.isSummary
+        tr
+          each column in tableData.columns
+              td.isSummary #{row[column.dataKey]}
+      else
+        tr
+          each column in tableData.columns
+            td #{row[column.dataKey]}
+          
