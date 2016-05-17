@@ -20,15 +20,15 @@ table.grandsummary
   tr 
     td Check Products
     each checkdata in grandSummary.checkProduct
-      td #{checkdata}
+      td.gscell #{checkdata}
   tr 
     td Others
     each otherdata in grandSummary.otherProduct
-      td #{otherdata}
+      td.gscell #{otherdata}
   tr 
     td Difference
     each diffdata in grandSummary.difference
-      td #{diffdata}
+      td.gscell.gsdiff #{diffdata}
   tr
     td
       | Assumed Selling Price Per Unit:

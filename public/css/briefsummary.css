@@ -59,25 +59,6 @@ table.grandsummary tr> td:nth-child(1){
 	min-width: 200px;
 }
 
-table.grandsummary tr:nth-child(1n+3) td{
-	font-size: 14px;
-}
-
-table.grandsummary tr:nth-child(5) td:nth-child(1n+2){
-	text-align: left;
-	padding-left: 40px;
-	font-weight: 400;
-}
-
-table.grandsummary tr:nth-child(4) td:nth-child(1n+2){
-	text-align: right;
-	padding-right: 40px;
-}
-
-table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
-	border-left: none;
-	border-right: none;
-}
 
 .grandsummary{
 	border-collapse: collapse;
@@ -88,7 +69,7 @@ table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
 
 .grandsummary td{
 	border: 1px solid gray;
-	font-size: 18px;
+	font-size: 14px;
 }
 
 table.grandsummary tr  td {
@@ -96,6 +77,16 @@ table.grandsummary tr  td {
 	border-bottom: none;
 	text-align: center;
 	padding: 10px;
+}
+
+table.grandsummary tr td.gscell {
+	text-align: center;
+	font-weight: normal;
+}
+
+table.grandsummary tr td.gscell.gsdiff {
+	text-align: center;
+	font-weight: 700;
 }
 
 .theader{
@@ -251,54 +242,13 @@ table#summary tr> td:nth-child(21), table#performance > div, footer{
 		padding-bottom: 20px;
 		text-align: left;
 	}
-
-	table.grandsummary tr:nth-child(1n+3) td, table#summary th, .notes{
-		font-size: 15px;
-	}
-
-	table.grandsummary tr:nth-child(5) td:nth-child(1n+2){
-		text-align: left;
-		padding-left: 40px;
-		font-weight: 400;
-	}
-
-	table.grandsummary thead tr:nth-child(2){
-		border-bottom: none;
-	}
-
-	table.grandsummary tbody tr:nth-child(1){
-		border-top: none;
-	}
-
-	table.grandsummary tr:nth-child(4) td:nth-child(1n+2){
-		text-align: right;
-		padding-right: 40px;
-	}
-
-	table.grandsummary tr:nth-child(3n+5) td:nth-child(1n+3){
-		border-left: 0px;
-		border-right: 0px;
-	}
-
+	
 	.grandsummary{
-		border-collapse: collapse;
-		column-span: 4;
 		page-break-after: always;
 	}
 
-	table#performance, table#summary, table#grand, .grandsummary {
-		border: 2px solid gray;
-	}
-
-
-	.grandsummary td, table#summary tr td,
-	table#summary thead th, table#performance tbody tr td, table#performance thead th{
-		border: 1px solid gray !important;
-		border-collapse: collapse;
-	}
-
 	.grandsummary td{
-		font-size: 18px;
+		font-size: 14px;
 
 	}
 	
