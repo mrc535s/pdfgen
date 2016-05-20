@@ -11,7 +11,20 @@ var pdf = 'BriefSummary_' + genKey + '.pdf';
 
 /* POST home page. */
 router.post('/', function (req, res, next) {
-  var pdfGen = genPDF(req.body.data);
+  // var options = {
+  //     pageSize: 'letter',
+  //     orientation: 'landscape',
+  //     printMediaType: true,
+  //     footerLeft: "For non-spatial data,comparisons are based on the number of locations. For spatial data,comparisons are based on the number of unique location by soild type combinations.SSURGO is used to assign soil attributes to spatial trials",
+  //     footerRight: "Page [page] of [topage]",
+  //     footerFontSize: 6,
+  //     footerLine: true,
+  //     footerFontName: "Helvetica",
+  //     footerSpacing: 1
+  //   };
+    
+  var options = req.body.options;
+  var pdfGen = genPDF(req.body.html, options);
   pdfGen.on('finish', function () {
     res.download(pdf, pdf);
   });
@@ -19,14 +32,9 @@ router.post('/', function (req, res, next) {
 
 
 
-function genPDF(data) {
+function genPDF(html, options) {
   var write = fs.createWriteStream(pdf);
-  wkhtmltopdf(data, {
-      pageSize: 'letter',
-      orientation: 'landscape',
-      printMediaType: true,
-      footerHtml: base + '/footer.html'
-    })
+  wkhtmltopdf(html, options)
     .pipe(write);
 
   return write;
