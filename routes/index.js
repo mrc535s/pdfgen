@@ -23,7 +23,7 @@ router.post('/', function (req, res, next) {
   //     footerSpacing: 1
   //   };
     
-  var options = req.body.options;
+  var options = JSON.parse(req.body.options);
   var pdfGen = genPDF(req.body.html, options);
   pdfGen.on('finish', function () {
     res.download(pdf, pdf);
