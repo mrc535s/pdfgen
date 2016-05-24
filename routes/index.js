@@ -23,8 +23,7 @@ router.post('/', function (req, res, next) {
   //     footerSpacing: 1
   //   };
     
-  var conversion = require("phantom-html-to-pdf")(
-  );
+  var conversion = require("phantom-html-to-pdf")();
     conversion({ 
       html: req.body.html,
       paperSize: {
