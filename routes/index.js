@@ -29,7 +29,7 @@ router.post('/', function (req, res, next) {
       paperSize: {
         orientation: 'landscape',
       },
-      footer: "<div style='font-size: 6.5px;'> <span style='float: left;'> For non-spatial data, comparisons are based on the number of locations. For spatial data, comparisons are based on the number of unique location by soild type combinations. SSURGO is used to assign soil attributes to spatial trials </span> <span style='float: right'>Page {#pageNum} of {#numPages} </span>"
+      footer: "<div style='font-size: 6.5px; margin-top: 20px;'> <span style='float: left;'> For non-spatial data, comparisons are based on the number of locations. For spatial data, comparisons are based on the number of unique location by soild type combinations. SSURGO is used to assign soil attributes to spatial trials </span> <span style='float: right'>Page {#pageNum} of {#numPages} </span>"
     }, function(err, pdf) {
       console.log(pdf.logs);
       console.log(pdf.numberOfPages);
