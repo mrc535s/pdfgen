@@ -23,7 +23,12 @@ router.post('/', function (req, res, next) {
   //     footerSpacing: 1
   //   };
     
-  var conversion = require("phantom-html-to-pdf")();
+  var conversion = require("phantom-html-to-pdf")({
+      numberOfWorkers: 2,
+      /* timeout in ms for html conversion, when the timeout is reached, the phantom process is recycled */
+      timeout: 15000,
+    }
+  );
     conversion({ 
       html: req.body.html,
       paperSize: {
