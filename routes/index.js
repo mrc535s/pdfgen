@@ -23,11 +23,14 @@ router.post('/', function (req, res, next) {
   //     footerSpacing: 1
   //   };
     
-  var options = JSON.parse(req.body.options);
-  var pdfGen = genPDF(req.body.html, options);
-  pdfGen.on('finish', function () {
-    res.download(pdf, pdf);
-  });
+  var conversion = require("phantom-html-to-pdf")();
+    conversion({ html: req.body.html, paperSize: {
+        orientation: 'landscape'
+    } }, function(err, pdf) {
+      console.log(pdf.logs);
+      console.log(pdf.numberOfPages);
+      pdf.stream.pipe(res);
+    });
 });
 
 
