@@ -24,9 +24,13 @@ router.post('/', function (req, res, next) {
   //   };
     
   var conversion = require("phantom-html-to-pdf")();
-    conversion({ html: req.body.html, paperSize: {
-        orientation: 'landscape'
-    } }, function(err, pdf) {
+    conversion({ 
+      html: req.body.html,
+      paperSize: {
+        orientation: 'landscape',
+      },
+      footer: "<div style='font-size: 6.5px;'> <span style='float: left;'> For non-spatial data, comparisons are based on the number of locations. For spatial data, comparisons are based on the number of unique location by soild type combinations. SSURGO is used to assign soil attributes to spatial trials </span> <span style='float: right'>Page {#pageNum} of {#numPages} </span>"
+    }, function(err, pdf) {
       console.log(pdf.logs);
       console.log(pdf.numberOfPages);
       pdf.stream.pipe(res);
